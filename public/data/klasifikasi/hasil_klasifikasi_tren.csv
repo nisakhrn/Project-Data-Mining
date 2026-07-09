@@ -1,0 +1,24 @@
+kabupaten_kota,label_tren,slope_rls_per_tahun,prediksi_tren_loo
+Kota Subulussalam,Membaik,0.18109090909091305,Membaik
+Kabupaten Aceh Barat,Membaik,0.15321212121212524,Membaik
+Kabupaten Gayo Lues,Membaik,0.1500606060606085,Membaik
+Kabupaten Nagan Raya,Membaik,0.1269696969696999,Membaik
+Kabupaten Aceh Utara,Membaik,0.12587878787879023,Membaik
+Kabupaten Pidie Jaya,Membaik,0.12424242424242637,Membaik
+Kabupaten Simeulue,Membaik,0.12375757575757951,Membaik
+Kabupaten Aceh Singkil,Membaik,0.11721212121212266,Membaik
+Kabupaten Aceh Tamiang,Membaik,0.11381818181818347,Membaik
+Kabupaten Aceh Timur,Membaik,0.10436363636363898,Membaik
+Kabupaten Aceh Barat Daya,Membaik,0.09981818181818314,Membaik
+Kabupaten Aceh Selatan,Membaik,0.09569696969697063,Membaik
+Kabupaten Bener Meriah,Membaik,0.08521212121212303,Membaik
+Kabupaten Aceh Tenggara,Membaik,0.08054545454545621,Membaik
+Kota Lhokseumawe,Membaik,0.07751515151515305,Membaik
+Kota Banda Aceh,Membaik,0.0720606060606084,Membaik
+Kota Sabang,Membaik,0.06909090909090933,Membaik
+Kota Langsa,Membaik,0.0543636363636367,Membaik
+Kabupaten Aceh Besar,Membaik,0.050666666666666686,Membaik
+Kabupaten Bireuen,Stagnan,0.04757575757575809,Membaik
+Kabupaten Aceh Tengah,Stagnan,0.045151515151516004,Membaik
+Kabupaten Pidie,Stagnan,0.03806060606060677,Membaik
+Kabupaten Aceh Jaya,Menurun,-34.03751515151674,Membaik

@@ -1,0 +1,231 @@
+kabupaten_kota,tahun,rls__nilai,Label_RLS,Prediksi_Label,Prediksi_Benar
+Kabupaten Aceh Barat,2016,8.7,Perlu Peningkatan,Baik,False
+Kabupaten Aceh Barat,2017,9.04,Baik,Baik,True
+Kabupaten Aceh Barat,2018,9.08,Baik,Baik,True
+Kabupaten Aceh Barat,2019,9.09,Baik,Baik,True
+Kabupaten Aceh Barat,2020,9.37,Baik,Baik,True
+Kabupaten Aceh Barat,2021,9.55,Baik,Baik,True
+Kabupaten Aceh Barat,2022,9.87,Baik,Baik,True
+Kabupaten Aceh Barat,2023,9.98,Baik,Baik,True
+Kabupaten Aceh Barat,2024,9.99,Baik,Baik,True
+Kabupaten Aceh Barat,2025,9.99,Baik,Baik,True
+Kabupaten Aceh Barat Daya,2016,7.93,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2017,8.12,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2018,8.13,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2019,8.35,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2020,8.66,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2021,8.67,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2022,8.68,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2023,8.77,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2024,8.78,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Barat Daya,2025,8.78,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Besar,2016,9.92,Baik,Baik,True
+Kabupaten Aceh Besar,2017,9.93,Baik,Baik,True
+Kabupaten Aceh Besar,2018,10.14,Baik,Baik,True
+Kabupaten Aceh Besar,2019,10.31,Baik,Baik,True
+Kabupaten Aceh Besar,2020,10.32,Baik,Baik,True
+Kabupaten Aceh Besar,2021,10.33,Baik,Baik,True
+Kabupaten Aceh Besar,2022,10.35,Baik,Baik,True
+Kabupaten Aceh Besar,2023,10.36,Baik,Baik,True
+Kabupaten Aceh Besar,2024,10.37,Baik,Baik,True
+Kabupaten Aceh Besar,2025,10.37,Baik,Baik,True
+Kabupaten Aceh Jaya,2016,7.95,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2017,8.13,Baik,Baik,True
+Kabupaten Aceh Jaya,2018,8.37,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2019,8.66,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2020,8.7,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2021,8.71,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2022,8.72,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2023,8.74,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Jaya,2024,9.02,Baik,Baik,True
+Kabupaten Aceh Jaya,2025,9.02,Baik,Baik,True
+Kabupaten Aceh Selatan,2016,8.02,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2017,8.33,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2018,8.38,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2019,8.59,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2020,8.87,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2021,8.88,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2022,8.89,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2023,8.91,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2024,8.92,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Selatan,2025,8.92,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2016,7.69,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2017,7.84,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2018,8.05,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2019,8.52,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2020,8.53,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2021,8.68,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2022,8.69,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2023,8.7,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2024,8.72,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Singkil,2025,8.72,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2016,8.21,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2017,8.47,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2018,8.7,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2019,8.89,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2020,8.9,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Tamiang,2021,8.91,Perlu Peningkatan,Baik,False
+Kabupaten Aceh Tamiang,2022,9.04,Baik,Baik,True
+Kabupaten Aceh Tamiang,2023,9.24,Baik,Baik,True
+Kabupaten Aceh Tamiang,2024,9.3,Baik,Baik,True
+Kabupaten Aceh Tamiang,2025,9.3,Baik,Baik,True
+Kabupaten Aceh Tengah,2016,9.66,Baik,Baik,True
+Kabupaten Aceh Tengah,2017,9.67,Baik,Baik,True
+Kabupaten Aceh Tengah,2018,9.68,Baik,Baik,True
+Kabupaten Aceh Tengah,2019,9.69,Baik,Baik,True
+Kabupaten Aceh Tengah,2020,9.85,Baik,Baik,True
+Kabupaten Aceh Tengah,2021,9.86,Baik,Baik,True
+Kabupaten Aceh Tengah,2022,9.87,Baik,Baik,True
+Kabupaten Aceh Tengah,2023,9.89,Baik,Baik,True
+Kabupaten Aceh Tengah,2024,10.03,Baik,Baik,True
+Kabupaten Aceh Tengah,2025,10.03,Baik,Baik,True
+Kabupaten Aceh Tenggara,2016,9.33,Baik,Baik,True
+Kabupaten Aceh Tenggara,2017,9.63,Baik,Baik,True
+Kabupaten Aceh Tenggara,2018,9.64,Baik,Baik,True
+Kabupaten Aceh Tenggara,2019,9.65,Baik,Baik,True
+Kabupaten Aceh Tenggara,2020,9.66,Baik,Baik,True
+Kabupaten Aceh Tenggara,2021,9.67,Baik,Baik,True
+Kabupaten Aceh Tenggara,2022,9.92,Baik,Baik,True
+Kabupaten Aceh Tenggara,2023,10.09,Baik,Baik,True
+Kabupaten Aceh Tenggara,2024,10.1,Baik,Baik,True
+Kabupaten Aceh Tenggara,2025,10.1,Baik,Baik,True
+Kabupaten Aceh Timur,2016,7.6,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2017,7.8,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2018,7.85,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2019,7.86,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2020,8.15,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2021,8.21,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2022,8.32,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2023,8.47,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2024,8.48,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Timur,2025,8.48,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2016,8.09,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2017,8.1,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2018,8.11,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2019,8.46,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2020,8.63,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2021,8.64,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2022,8.73,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Aceh Utara,2023,8.85,Perlu Peningkatan,Baik,False
+Kabupaten Aceh Utara,2024,9.11,Baik,Baik,True
+Kabupaten Aceh Utara,2025,9.11,Baik,Baik,True
+Kabupaten Bener Meriah,2016,9.43,Baik,Baik,True
+Kabupaten Bener Meriah,2017,9.55,Baik,Baik,True
+Kabupaten Bener Meriah,2018,9.56,Baik,Baik,True
+Kabupaten Bener Meriah,2019,9.78,Baik,Baik,True
+Kabupaten Bener Meriah,2020,9.79,Baik,Baik,True
+Kabupaten Bener Meriah,2021,10.0,Baik,Baik,True
+Kabupaten Bener Meriah,2022,10.01,Baik,Baik,True
+Kabupaten Bener Meriah,2023,10.12,Baik,Baik,True
+Kabupaten Bener Meriah,2024,10.13,Baik,Baik,True
+Kabupaten Bener Meriah,2025,10.13,Baik,Baik,True
+Kabupaten Bireuen,2016,9.15,Baik,Baik,True
+Kabupaten Bireuen,2017,9.16,Baik,Baik,True
+Kabupaten Bireuen,2018,9.17,Baik,Baik,True
+Kabupaten Bireuen,2019,9.27,Baik,Baik,True
+Kabupaten Bireuen,2020,9.28,Baik,Baik,True
+Kabupaten Bireuen,2021,9.29,Baik,Baik,True
+Kabupaten Bireuen,2022,9.31,Baik,Baik,True
+Kabupaten Bireuen,2023,9.32,Baik,Baik,True
+Kabupaten Bireuen,2024,9.59,Baik,Baik,True
+Kabupaten Bireuen,2025,9.59,Baik,Baik,True
+Kabupaten Gayo Lues,2016,7.1,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2017,7.39,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2018,7.69,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2019,7.91,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2020,8.2,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2021,8.4,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2022,8.41,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2023,8.42,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2024,8.44,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Gayo Lues,2025,8.44,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2016,8.24,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2017,8.25,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2018,8.26,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2019,8.5,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2020,8.68,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2021,8.69,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2022,8.95,Perlu Peningkatan,Baik,False
+Kabupaten Nagan Raya,2023,8.96,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Nagan Raya,2024,9.25,Baik,Baik,True
+Kabupaten Nagan Raya,2025,9.25,Baik,Baik,True
+Kabupaten Pidie,2016,8.75,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie,2017,8.76,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie,2018,8.81,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie,2019,8.82,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie,2020,8.99,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie,2021,9.0,Baik,Baik,True
+Kabupaten Pidie,2022,9.02,Baik,Baik,True
+Kabupaten Pidie,2023,9.03,Baik,Baik,True
+Kabupaten Pidie,2024,9.04,Baik,Baik,True
+Kabupaten Pidie,2025,9.04,Baik,Baik,True
+Kabupaten Pidie Jaya,2016,8.46,Perlu Peningkatan,Baik,False
+Kabupaten Pidie Jaya,2017,8.84,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Pidie Jaya,2018,8.86,Perlu Peningkatan,Baik,False
+Kabupaten Pidie Jaya,2019,9.04,Baik,Baik,True
+Kabupaten Pidie Jaya,2020,9.33,Baik,Baik,True
+Kabupaten Pidie Jaya,2021,9.34,Baik,Baik,True
+Kabupaten Pidie Jaya,2022,9.53,Baik,Baik,True
+Kabupaten Pidie Jaya,2023,9.58,Baik,Baik,True
+Kabupaten Pidie Jaya,2024,9.59,Baik,Baik,True
+Kabupaten Pidie Jaya,2025,9.59,Baik,Baik,True
+Kabupaten Simeulue,2016,8.91,Perlu Peningkatan,Perlu Peningkatan,True
+Kabupaten Simeulue,2017,9.06,Baik,Baik,True
+Kabupaten Simeulue,2018,9.07,Baik,Baik,True
+Kabupaten Simeulue,2019,9.08,Baik,Baik,True
+Kabupaten Simeulue,2020,9.34,Baik,Baik,True
+Kabupaten Simeulue,2021,9.48,Baik,Baik,True
+Kabupaten Simeulue,2022,9.73,Baik,Baik,True
+Kabupaten Simeulue,2023,9.81,Baik,Baik,True
+Kabupaten Simeulue,2024,9.89,Baik,Baik,True
+Kabupaten Simeulue,2025,9.89,Baik,Baik,True
+Kota Banda Aceh,2016,12.57,Baik,Baik,True
+Kota Banda Aceh,2017,12.59,Baik,Baik,True
+Kota Banda Aceh,2018,12.6,Baik,Baik,True
+Kota Banda Aceh,2019,12.64,Baik,Baik,True
+Kota Banda Aceh,2020,12.65,Baik,Baik,True
+Kota Banda Aceh,2021,12.83,Baik,Baik,True
+Kota Banda Aceh,2022,13.03,Baik,Baik,True
+Kota Banda Aceh,2023,13.04,Baik,Baik,True
+Kota Banda Aceh,2024,13.1,Baik,Baik,True
+Kota Banda Aceh,2025,13.1,Baik,Baik,True
+Kota Langsa,2016,10.71,Baik,Baik,True
+Kota Langsa,2017,10.9,Baik,Baik,True
+Kota Langsa,2018,11.06,Baik,Baik,True
+Kota Langsa,2019,11.1,Baik,Baik,True
+Kota Langsa,2020,11.11,Baik,Baik,True
+Kota Langsa,2021,11.12,Baik,Baik,True
+Kota Langsa,2022,11.14,Baik,Baik,True
+Kota Langsa,2023,11.27,Baik,Baik,True
+Kota Langsa,2024,11.28,Baik,Baik,True
+Kota Langsa,2025,11.28,Baik,Baik,True
+Kota Lhokseumawe,2016,10.53,Baik,Baik,True
+Kota Lhokseumawe,2017,10.88,Baik,Baik,True
+Kota Lhokseumawe,2018,10.89,Baik,Baik,True
+Kota Lhokseumawe,2019,10.9,Baik,Baik,True
+Kota Lhokseumawe,2020,10.91,Baik,Baik,True
+Kota Lhokseumawe,2021,11.11,Baik,Baik,True
+Kota Lhokseumawe,2022,11.12,Baik,Baik,True
+Kota Lhokseumawe,2023,11.27,Baik,Baik,True
+Kota Lhokseumawe,2024,11.31,Baik,Baik,True
+Kota Lhokseumawe,2025,11.31,Baik,Baik,True
+Kota Sabang,2016,10.51,Baik,Baik,True
+Kota Sabang,2017,10.7,Baik,Baik,True
+Kota Sabang,2018,10.97,Baik,Baik,True
+Kota Sabang,2019,11.13,Baik,Baik,True
+Kota Sabang,2020,11.14,Baik,Baik,True
+Kota Sabang,2021,11.18,Baik,Baik,True
+Kota Sabang,2022,11.19,Baik,Baik,True
+Kota Sabang,2023,11.2,Baik,Baik,True
+Kota Sabang,2024,11.22,Baik,Baik,True
+Kota Sabang,2025,11.22,Baik,Baik,True
+Kota Subulussalam,2016,6.88,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2017,7.12,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2018,7.39,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2019,7.58,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2020,7.84,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2021,8.03,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2022,8.22,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2023,8.32,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2024,8.43,Perlu Peningkatan,Perlu Peningkatan,True
+Kota Subulussalam,2025,8.43,Perlu Peningkatan,Perlu Peningkatan,True

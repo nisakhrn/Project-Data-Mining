@@ -1,0 +1,231 @@
+kabupaten_kota,tahun,rasio_murid_per_guru_sd,Label_SD,Prediksi_Label_SD,rasio_murid_per_guru_smp,Label_SMP,Prediksi_Label_SMP,rasio_murid_per_guru_sma,Label_SMA,Prediksi_Label_SMA,rasio_murid_per_guru_smk,Label_SMK,Prediksi_Label_SMK
+Kabupaten Aceh Barat,2016,7.012095032397408,Baik,Baik,7.946737683089214,Baik,Baik,10.109756097560975,Perlu Peningkatan,Baik,8.022364217252397,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2017,7.93065518890483,Baik,Baik,7.433128834355828,Baik,Baik,10.24390243902439,Perlu Peningkatan,Baik,8.4,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2018,7.471567267683772,Baik,Baik,7.154113557358054,Baik,Baik,10.098765432098766,Perlu Peningkatan,Baik,8.33860759493671,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2019,7.012095032397408,Baik,Baik,7.361725663716814,Baik,Baik,10.083673469387755,Perlu Peningkatan,Baik,8.305295950155763,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2020,6.619126819126819,Baik,Baik,6.568914956011731,Baik,Baik,9.419161676646707,Baik,Baik,8.087349397590362,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2021,6.88641234462066,Baik,Baik,5.984600577478345,Baik,Baik,9.6,Baik,Baik,8.971153846153847,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Barat,2022,6.7444539249146755,Baik,Baik,5.66049953746531,Baik,Baik,9.580321285140561,Baik,Baik,8.366279069767442,Perlu Peningkatan,Baik
+Kabupaten Aceh Barat,2023,6.911364633611233,Baik,Baik,5.666361136571952,Baik,Baik,9.553191489361701,Baik,Baik,7.4884318766066835,Baik,Baik
+Kabupaten Aceh Barat,2024,7.088075880758808,Baik,Baik,6.218543046357616,Baik,Baik,9.193612774451097,Baik,Baik,7.11968085106383,Baik,Baik
+Kabupaten Aceh Barat,2025,7.21753097751262,Baik,Baik,6.354562737642586,Baik,Baik,9.124,Baik,Baik,7.332425068119891,Baik,Baik
+Kabupaten Aceh Barat Daya,2016,7.963206307490145,Baik,Baik,10.019642857142857,Perlu Peningkatan,Perlu Peningkatan,10.874476987447698,Perlu Peningkatan,Perlu Peningkatan,7.188235294117647,Baik,Baik
+Kabupaten Aceh Barat Daya,2017,7.644444444444445,Baik,Baik,9.55834829443447,Perlu Peningkatan,Perlu Peningkatan,10.751592356687897,Perlu Peningkatan,Perlu Peningkatan,7.751592356687898,Baik,Baik
+Kabupaten Aceh Barat Daya,2018,8.26986301369863,Baik,Baik,9.887619047619047,Perlu Peningkatan,Baik,10.050526315789474,Perlu Peningkatan,Perlu Peningkatan,7.7105263157894735,Baik,Baik
+Kabupaten Aceh Barat Daya,2019,7.963206307490145,Baik,Baik,8.945634266886326,Perlu Peningkatan,Perlu Peningkatan,10.738636363636363,Perlu Peningkatan,Perlu Peningkatan,7.719178082191781,Baik,Baik
+Kabupaten Aceh Barat Daya,2020,7.650479233226837,Baik,Baik,8.22121212121212,Baik,Baik,9.984782608695653,Perlu Peningkatan,Perlu Peningkatan,7.098684210526316,Baik,Baik
+Kabupaten Aceh Barat Daya,2021,8.188691650230112,Baik,Baik,7.894049346879536,Baik,Baik,11.483796296296296,Perlu Peningkatan,Perlu Peningkatan,7.565217391304348,Baik,Baik
+Kabupaten Aceh Barat Daya,2022,8.304551539491298,Baik,Baik,7.778901734104046,Baik,Baik,10.412037037037036,Perlu Peningkatan,Perlu Peningkatan,6.924657534246576,Baik,Baik
+Kabupaten Aceh Barat Daya,2023,8.245085190039319,Baik,Baik,7.80635838150289,Baik,Baik,10.612009237875288,Perlu Peningkatan,Perlu Peningkatan,6.7006369426751595,Baik,Baik
+Kabupaten Aceh Barat Daya,2024,8.182809493264914,Baik,Baik,8.364296081277214,Baik,Baik,10.445205479452055,Perlu Peningkatan,Perlu Peningkatan,6.16969696969697,Baik,Baik
+Kabupaten Aceh Barat Daya,2025,8.067295597484277,Baik,Baik,8.243553008595988,Baik,Baik,10.006711409395972,Perlu Peningkatan,Perlu Peningkatan,6.846625766871166,Baik,Baik
+Kabupaten Aceh Besar,2016,11.63150074294205,Perlu Peningkatan,Perlu Peningkatan,8.29238884702336,Baik,Baik,7.023692003948668,Baik,Baik,9.462585034013605,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Besar,2017,11.949845679012345,Perlu Peningkatan,Perlu Peningkatan,8.344981412639406,Baik,Baik,7.204771371769383,Baik,Baik,10.673846153846155,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Besar,2018,12.210753532182103,Perlu Peningkatan,Baik,9.183109118086696,Perlu Peningkatan,Baik,7.417251755265798,Baik,Baik,9.486338797814208,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Besar,2019,11.63150074294205,Perlu Peningkatan,Perlu Peningkatan,10.361151079136691,Perlu Peningkatan,Perlu Peningkatan,7.569721115537849,Baik,Baik,8.538083538083539,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Besar,2020,10.909833155839546,Perlu Peningkatan,Perlu Peningkatan,10.136363636363637,Perlu Peningkatan,Perlu Peningkatan,7.086255924170616,Baik,Baik,7.661290322580645,Baik,Baik
+Kabupaten Aceh Besar,2021,11.367636092468308,Perlu Peningkatan,Perlu Peningkatan,11.057246376811595,Perlu Peningkatan,Perlu Peningkatan,8.29459734964322,Baik,Baik,8.227064220183486,Perlu Peningkatan,Baik
+Kabupaten Aceh Besar,2022,11.376252319109462,Perlu Peningkatan,Perlu Peningkatan,10.524460431654676,Perlu Peningkatan,Perlu Peningkatan,8.894164193867457,Baik,Baik,6.917570498915401,Baik,Baik
+Kabupaten Aceh Besar,2023,11.190545454545454,Perlu Peningkatan,Perlu Peningkatan,10.271676300578035,Perlu Peningkatan,Perlu Peningkatan,9.667644183773216,Baik,Baik,6.941558441558442,Baik,Baik
+Kabupaten Aceh Besar,2024,11.00784034212402,Perlu Peningkatan,Perlu Peningkatan,10.289834174477289,Perlu Peningkatan,Perlu Peningkatan,9.584037558685447,Baik,Baik,6.579175704989154,Baik,Baik
+Kabupaten Aceh Besar,2025,11.046306115235065,Perlu Peningkatan,Perlu Peningkatan,10.53230543318649,Perlu Peningkatan,Perlu Peningkatan,9.523320895522389,Baik,Baik,6.502136752136752,Baik,Baik
+Kabupaten Aceh Jaya,2016,8.964795432921028,Baik,Baik,7.2992518703241895,Baik,Baik,9.853881278538813,Perlu Peningkatan,Perlu Peningkatan,6.407407407407407,Baik,Baik
+Kabupaten Aceh Jaya,2017,10.107491856677525,Baik,Baik,6.422018348623853,Baik,Baik,9.184313725490195,Baik,Baik,6.391304347826087,Baik,Baik
+Kabupaten Aceh Jaya,2018,10.496651785714286,Baik,Baik,6.854117647058824,Baik,Baik,8.35740072202166,Baik,Baik,6.3418803418803416,Baik,Baik
+Kabupaten Aceh Jaya,2019,8.964795432921028,Baik,Baik,7.84375,Baik,Baik,8.383211678832117,Baik,Baik,6.302521008403361,Baik,Baik
+Kabupaten Aceh Jaya,2020,7.693210393964795,Baik,Baik,7.158469945355192,Baik,Baik,7.748175182481752,Baik,Baik,7.0,Baik,Baik
+Kabupaten Aceh Jaya,2021,8.490757855822551,Baik,Baik,7.9087221095334685,Baik,Baik,8.902834008097166,Baik,Perlu Peningkatan,7.140495867768595,Baik,Baik
+Kabupaten Aceh Jaya,2022,8.247714808043876,Baik,Baik,6.75830258302583,Baik,Baik,9.819607843137256,Perlu Peningkatan,Perlu Peningkatan,7.052631578947368,Baik,Baik
+Kabupaten Aceh Jaya,2023,8.026809651474531,Baik,Baik,6.702752293577982,Baik,Baik,10.187022900763358,Perlu Peningkatan,Perlu Peningkatan,6.141025641025641,Baik,Baik
+Kabupaten Aceh Jaya,2024,7.814685314685315,Baik,Baik,6.550173010380623,Baik,Baik,10.782608695652174,Perlu Peningkatan,Perlu Peningkatan,6.852348993288591,Baik,Baik
+Kabupaten Aceh Jaya,2025,7.755401901469317,Baik,Baik,6.124183006535947,Baik,Baik,10.465587044534413,Perlu Peningkatan,Perlu Peningkatan,6.745098039215686,Baik,Baik
+Kabupaten Aceh Selatan,2016,7.874321179208689,Baik,Baik,10.4251968503937,Perlu Peningkatan,Perlu Peningkatan,10.383333333333333,Perlu Peningkatan,Perlu Peningkatan,5.947368421052632,Baik,Baik
+Kabupaten Aceh Selatan,2017,7.65489443378119,Baik,Baik,9.298755186721992,Perlu Peningkatan,Baik,9.74083769633508,Perlu Peningkatan,Perlu Peningkatan,6.477732793522267,Baik,Baik
+Kabupaten Aceh Selatan,2018,7.974633372968688,Baik,Baik,8.723643807574208,Perlu Peningkatan,Baik,8.634002361275089,Baik,Baik,6.2795275590551185,Baik,Baik
+Kabupaten Aceh Selatan,2019,7.874321179208689,Baik,Baik,8.489,Baik,Baik,8.539379474940334,Baik,Baik,6.115384615384615,Baik,Baik
+Kabupaten Aceh Selatan,2020,7.486656782802076,Baik,Baik,8.022684310018903,Baik,Baik,7.8262857142857145,Baik,Baik,5.833962264150943,Baik,Baik
+Kabupaten Aceh Selatan,2021,7.709118891881493,Baik,Baik,8.109628217349856,Baik,Baik,8.0,Baik,Baik,5.579136690647482,Baik,Baik
+Kabupaten Aceh Selatan,2022,7.508988764044944,Baik,Baik,7.818596171376481,Baik,Baik,7.6,Baik,Baik,4.5647840531561465,Baik,Baik
+Kabupaten Aceh Selatan,2023,7.75,Baik,Baik,8.216901408450704,Baik,Baik,7.57258064516129,Baik,Baik,4.418461538461538,Baik,Baik
+Kabupaten Aceh Selatan,2024,8.004801920768307,Baik,Baik,8.544423440453686,Perlu Peningkatan,Perlu Peningkatan,7.578713968957872,Baik,Baik,4.603715170278638,Baik,Baik
+Kabupaten Aceh Selatan,2025,7.824623911322249,Baik,Baik,8.577137546468402,Perlu Peningkatan,Perlu Peningkatan,7.423365487674169,Baik,Baik,4.767080745341615,Baik,Baik
+Kabupaten Aceh Singkil,2016,13.41958041958042,Perlu Peningkatan,Perlu Peningkatan,12.4,Perlu Peningkatan,Perlu Peningkatan,14.178988326848248,Perlu Peningkatan,Perlu Peningkatan,10.091743119266056,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Singkil,2017,14.68935427574171,Perlu Peningkatan,Perlu Peningkatan,12.040515653775323,Perlu Peningkatan,Perlu Peningkatan,13.725563909774436,Perlu Peningkatan,Perlu Peningkatan,8.147887323943662,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Singkil,2018,14.598275862068965,Perlu Peningkatan,Perlu Peningkatan,11.123388581952117,Perlu Peningkatan,Perlu Peningkatan,13.307142857142857,Perlu Peningkatan,Perlu Peningkatan,8.014388489208633,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Singkil,2019,13.41958041958042,Perlu Peningkatan,Perlu Peningkatan,9.609677419354838,Perlu Peningkatan,Perlu Peningkatan,13.956989247311828,Perlu Peningkatan,Perlu Peningkatan,7.875,Baik,Baik
+Kabupaten Aceh Singkil,2020,12.783621337340346,Perlu Peningkatan,Perlu Peningkatan,8.976708074534162,Perlu Peningkatan,Perlu Peningkatan,13.399317406143345,Perlu Peningkatan,Perlu Peningkatan,7.255172413793104,Baik,Baik
+Kabupaten Aceh Singkil,2021,13.313084112149532,Perlu Peningkatan,Perlu Peningkatan,9.732463295269168,Perlu Peningkatan,Perlu Peningkatan,12.863636363636363,Perlu Peningkatan,Perlu Peningkatan,7.006756756756757,Baik,Baik
+Kabupaten Aceh Singkil,2022,12.265261627906977,Perlu Peningkatan,Perlu Peningkatan,9.677672955974844,Perlu Peningkatan,Perlu Peningkatan,11.616949152542373,Perlu Peningkatan,Perlu Peningkatan,5.5271739130434785,Baik,Baik
+Kabupaten Aceh Singkil,2023,12.345507669831994,Perlu Peningkatan,Perlu Peningkatan,10.188163884673749,Perlu Peningkatan,Perlu Peningkatan,10.958199356913184,Perlu Peningkatan,Perlu Peningkatan,4.504901960784314,Baik,Baik
+Kabupaten Aceh Singkil,2024,12.426578560939795,Perlu Peningkatan,Perlu Peningkatan,11.078616352201259,Perlu Peningkatan,Perlu Peningkatan,12.1,Perlu Peningkatan,Perlu Peningkatan,4.761904761904762,Baik,Baik
+Kabupaten Aceh Singkil,2025,13.16024653312789,Perlu Peningkatan,Perlu Peningkatan,11.066964285714286,Perlu Peningkatan,Perlu Peningkatan,12.554517133956386,Perlu Peningkatan,Perlu Peningkatan,5.135869565217392,Baik,Baik
+Kabupaten Aceh Tamiang,2016,15.506821627084387,Perlu Peningkatan,Perlu Peningkatan,11.909090909090908,Perlu Peningkatan,Perlu Peningkatan,12.899841017488077,Perlu Peningkatan,Perlu Peningkatan,9.465798045602606,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2017,16.77361563517915,Perlu Peningkatan,Perlu Peningkatan,12.030090270812437,Perlu Peningkatan,Perlu Peningkatan,11.312934631432546,Perlu Peningkatan,Perlu Peningkatan,9.761904761904763,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2018,16.721705850191363,Perlu Peningkatan,Perlu Peningkatan,12.463874345549739,Perlu Peningkatan,Perlu Peningkatan,11.045092838196286,Perlu Peningkatan,Perlu Peningkatan,10.26086956521739,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2019,15.506821627084387,Perlu Peningkatan,Perlu Peningkatan,12.268849206349206,Perlu Peningkatan,Perlu Peningkatan,11.418635170603675,Perlu Peningkatan,Perlu Peningkatan,10.706060606060607,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2020,14.604390243902438,Perlu Peningkatan,Perlu Peningkatan,12.279227053140097,Perlu Peningkatan,Perlu Peningkatan,11.154037267080746,Perlu Peningkatan,Perlu Peningkatan,9.860795454545455,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2021,14.486796213253612,Perlu Peningkatan,Perlu Peningkatan,12.727810650887575,Perlu Peningkatan,Perlu Peningkatan,12.267114093959732,Perlu Peningkatan,Perlu Peningkatan,10.29737609329446,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2022,13.905084745762712,Perlu Peningkatan,Perlu Peningkatan,12.151984511132623,Perlu Peningkatan,Perlu Peningkatan,12.017287234042554,Perlu Peningkatan,Perlu Peningkatan,9.263610315186247,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2023,13.478136882129277,Perlu Peningkatan,Perlu Peningkatan,11.702471482889734,Perlu Peningkatan,Perlu Peningkatan,11.918678526048284,Perlu Peningkatan,Perlu Peningkatan,8.991780821917809,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2024,13.066262249183389,Perlu Peningkatan,Perlu Peningkatan,11.0591985428051,Perlu Peningkatan,Perlu Peningkatan,11.758104738154614,Perlu Peningkatan,Perlu Peningkatan,8.803191489361701,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tamiang,2025,13.118396226415094,Perlu Peningkatan,Perlu Peningkatan,11.428440366972477,Perlu Peningkatan,Perlu Peningkatan,11.556930693069306,Perlu Peningkatan,Perlu Peningkatan,8.706493506493507,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2016,9.202548930359582,Baik,Baik,7.501154734411085,Baik,Baik,8.95,Baik,Baik,10.774038461538462,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2017,9.370944992947814,Baik,Baik,7.473067915690867,Baik,Baik,8.572222222222223,Baik,Baik,11.798076923076923,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2018,9.409306742640076,Baik,Baik,6.995310668229777,Baik,Baik,7.989031078610603,Baik,Baik,11.652380952380952,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2019,9.202548930359582,Baik,Baik,6.454831932773109,Baik,Baik,7.738898756660746,Baik,Baik,11.50943396226415,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2020,8.71034180543383,Baik,Baik,5.887254901960785,Baik,Baik,7.451438848920863,Baik,Baik,9.492248062015504,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2021,9.144967682363804,Baik,Baik,6.223684210526316,Baik,Baik,8.242544731610337,Baik,Baik,11.591269841269842,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2022,8.534743202416918,Baik,Baik,6.050147492625369,Baik,Baik,8.284069097888676,Baik,Baik,8.490706319702602,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tengah,2023,8.230422304223042,Baik,Baik,6.107750472589792,Baik,Baik,8.702803738317757,Baik,Baik,7.691525423728813,Baik,Baik
+Kabupaten Aceh Tengah,2024,7.9550956657555645,Baik,Baik,6.423113658070678,Baik,Baik,9.355899419729207,Baik,Baik,7.382059800664452,Baik,Baik
+Kabupaten Aceh Tengah,2025,7.673105497771174,Baik,Baik,6.639850327408793,Baik,Baik,9.552380952380952,Baik,Baik,7.833333333333333,Baik,Baik
+Kabupaten Aceh Tenggara,2016,14.993075591459895,Perlu Peningkatan,Perlu Peningkatan,12.655172413793103,Perlu Peningkatan,Perlu Peningkatan,14.013257575757576,Perlu Peningkatan,Perlu Peningkatan,10.86046511627907,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2017,15.395625,Perlu Peningkatan,Perlu Peningkatan,12.184115523465705,Perlu Peningkatan,Perlu Peningkatan,13.629562043795621,Perlu Peningkatan,Perlu Peningkatan,10.532520325203253,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2018,16.039240506329115,Perlu Peningkatan,Perlu Peningkatan,11.907142857142857,Perlu Peningkatan,Perlu Peningkatan,12.513321492007105,Perlu Peningkatan,Perlu Peningkatan,9.889705882352942,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2019,14.993075591459895,Perlu Peningkatan,Perlu Peningkatan,10.697190426638917,Perlu Peningkatan,Perlu Peningkatan,11.29818780889621,Perlu Peningkatan,Perlu Peningkatan,9.36241610738255,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2020,13.16125708397733,Perlu Peningkatan,Perlu Peningkatan,9.86787072243346,Perlu Peningkatan,Perlu Peningkatan,10.388802488335925,Perlu Peningkatan,Perlu Peningkatan,8.159375,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2021,13.55700325732899,Perlu Peningkatan,Perlu Peningkatan,10.371628371628372,Perlu Peningkatan,Perlu Peningkatan,11.079931972789115,Perlu Peningkatan,Perlu Peningkatan,9.679310344827586,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2022,12.583290355853533,Perlu Peningkatan,Perlu Peningkatan,9.78168362627197,Perlu Peningkatan,Perlu Peningkatan,10.531746031746032,Perlu Peningkatan,Perlu Peningkatan,8.148148148148149,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Tenggara,2023,11.119307832422587,Perlu Peningkatan,Perlu Peningkatan,8.98927392739274,Perlu Peningkatan,Perlu Peningkatan,9.903177004538579,Perlu Peningkatan,Perlu Peningkatan,7.4335443037974684,Baik,Baik
+Kabupaten Aceh Tenggara,2024,9.962087240114146,Baik,Baik,9.06425702811245,Perlu Peningkatan,Perlu Peningkatan,9.696531791907514,Baik,Baik,6.954022988505747,Baik,Baik
+Kabupaten Aceh Tenggara,2025,9.268154311649017,Baik,Baik,8.240596167494678,Baik,Baik,9.266483516483516,Baik,Baik,7.239130434782608,Baik,Baik
+Kabupaten Aceh Timur,2016,11.767284111661883,Perlu Peningkatan,Perlu Peningkatan,9.990760483297796,Perlu Peningkatan,Perlu Peningkatan,10.28214731585518,Perlu Peningkatan,Perlu Peningkatan,11.03951367781155,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Timur,2017,12.44228132711818,Perlu Peningkatan,Perlu Peningkatan,10.387710314557426,Perlu Peningkatan,Perlu Peningkatan,10.251207729468598,Perlu Peningkatan,Perlu Peningkatan,10.238461538461538,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Timur,2018,12.507734806629834,Perlu Peningkatan,Perlu Peningkatan,10.143272727272727,Perlu Peningkatan,Perlu Peningkatan,10.144549763033176,Perlu Peningkatan,Perlu Peningkatan,9.416666666666666,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Timur,2019,11.767284111661883,Perlu Peningkatan,Perlu Peningkatan,9.79502292075966,Perlu Peningkatan,Perlu Peningkatan,10.342789598108746,Perlu Peningkatan,Perlu Peningkatan,8.761099365750528,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Timur,2020,11.079266782264057,Perlu Peningkatan,Perlu Peningkatan,9.58276923076923,Perlu Peningkatan,Perlu Peningkatan,9.296629213483145,Baik,Baik,7.852882703777336,Baik,Baik
+Kabupaten Aceh Timur,2021,11.666666666666666,Perlu Peningkatan,Perlu Peningkatan,9.454826732673267,Perlu Peningkatan,Perlu Peningkatan,9.522727272727273,Baik,Baik,7.356701030927835,Baik,Baik
+Kabupaten Aceh Timur,2022,11.273258769700051,Perlu Peningkatan,Perlu Peningkatan,8.914387633769323,Perlu Peningkatan,Perlu Peningkatan,9.417073170731708,Baik,Baik,6.495361781076067,Baik,Baik
+Kabupaten Aceh Timur,2023,11.082056351952545,Perlu Peningkatan,Perlu Peningkatan,8.910105757931845,Perlu Peningkatan,Perlu Peningkatan,9.554086538461538,Baik,Baik,6.99812734082397,Baik,Baik
+Kabupaten Aceh Timur,2024,10.903536203993264,Perlu Peningkatan,Perlu Peningkatan,8.777142857142858,Perlu Peningkatan,Perlu Peningkatan,9.949458483754512,Perlu Peningkatan,Perlu Peningkatan,7.59626168224299,Baik,Baik
+Kabupaten Aceh Timur,2025,10.669682208304337,Perlu Peningkatan,Perlu Peningkatan,9.053061224489795,Perlu Peningkatan,Perlu Peningkatan,10.373152709359607,Perlu Peningkatan,Perlu Peningkatan,7.8658318425760285,Baik,Baik
+Kabupaten Aceh Utara,2016,10.765752936988251,Perlu Peningkatan,Perlu Peningkatan,8.70359078590786,Perlu Peningkatan,Perlu Peningkatan,9.8497375328084,Perlu Peningkatan,Perlu Peningkatan,9.562271062271062,Perlu Peningkatan,Baik
+Kabupaten Aceh Utara,2017,10.637784090909092,Baik,Perlu Peningkatan,8.528276329156789,Perlu Peningkatan,Perlu Peningkatan,9.68407643312102,Baik,Baik,8.63036809815951,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Utara,2018,10.947099598686611,Perlu Peningkatan,Perlu Peningkatan,8.315771467670201,Baik,Baik,9.903204708960105,Perlu Peningkatan,Perlu Peningkatan,8.51923076923077,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Aceh Utara,2019,10.765752936988251,Perlu Peningkatan,Perlu Peningkatan,8.668170774036792,Perlu Peningkatan,Perlu Peningkatan,10.10842586544742,Perlu Peningkatan,Perlu Peningkatan,8.415714285714285,Perlu Peningkatan,Baik
+Kabupaten Aceh Utara,2020,10.327138186198589,Baik,Baik,8.510538641686182,Perlu Peningkatan,Perlu Peningkatan,9.627802690582959,Baik,Baik,8.345221112696148,Perlu Peningkatan,Baik
+Kabupaten Aceh Utara,2021,10.70910396839648,Perlu Peningkatan,Perlu Peningkatan,8.509109311740891,Baik,Baik,9.587915818058384,Baik,Baik,7.663817663817664,Baik,Baik
+Kabupaten Aceh Utara,2022,10.579404466501241,Baik,Baik,8.323640095791994,Baik,Baik,8.886211512717537,Baik,Baik,6.2463576158940395,Baik,Baik
+Kabupaten Aceh Utara,2023,10.691681415929203,Perlu Peningkatan,Perlu Peningkatan,8.179114565731666,Baik,Baik,9.667134831460674,Baik,Baik,6.010416666666667,Baik,Baik
+Kabupaten Aceh Utara,2024,10.803464121597738,Perlu Peningkatan,Perlu Peningkatan,8.493001024240355,Baik,Baik,9.834242837653479,Perlu Peningkatan,Perlu Peningkatan,6.366533864541832,Baik,Baik
+Kabupaten Aceh Utara,2025,10.83108935128519,Perlu Peningkatan,Perlu Peningkatan,8.425894948143192,Baik,Baik,10.2,Perlu Peningkatan,Perlu Peningkatan,6.871052631578947,Baik,Baik
+Kabupaten Bener Meriah,2016,12.155719557195573,Perlu Peningkatan,Perlu Peningkatan,5.836177474402731,Baik,Baik,6.969750889679715,Baik,Baik,6.363636363636363,Baik,Baik
+Kabupaten Bener Meriah,2017,11.233859397417504,Perlu Peningkatan,Perlu Peningkatan,5.562715765247411,Baik,Baik,6.7264808362369335,Baik,Baik,6.047904191616767,Baik,Baik
+Kabupaten Bener Meriah,2018,13.283783783783784,Perlu Peningkatan,Perlu Peningkatan,6.02051282051282,Baik,Baik,6.273056057866184,Baik,Baik,6.459770114942529,Baik,Baik
+Kabupaten Bener Meriah,2019,12.155719557195573,Perlu Peningkatan,Perlu Peningkatan,6.01063829787234,Baik,Baik,6.50682261208577,Baik,Baik,6.802197802197802,Baik,Baik
+Kabupaten Bener Meriah,2020,11.500346020761246,Perlu Peningkatan,Perlu Peningkatan,5.864,Baik,Baik,6.069169960474309,Baik,Baik,6.838383838383838,Baik,Baik
+Kabupaten Bener Meriah,2021,12.04960460100647,Perlu Peningkatan,Perlu Peningkatan,5.896396396396397,Baik,Baik,6.84304932735426,Baik,Baik,8.377551020408163,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Bener Meriah,2022,11.920056100981768,Perlu Peningkatan,Perlu Peningkatan,5.893764434180139,Baik,Baik,7.547511312217194,Baik,Baik,6.598039215686274,Baik,Baik
+Kabupaten Bener Meriah,2023,11.52937293729373,Perlu Peningkatan,Perlu Peningkatan,6.476355247981545,Baik,Baik,8.342857142857143,Baik,Baik,6.507462686567164,Baik,Baik
+Kabupaten Bener Meriah,2024,11.182044887780549,Perlu Peningkatan,Perlu Peningkatan,6.876146788990826,Baik,Baik,9.285714285714286,Baik,Baik,6.7936507936507935,Baik,Baik
+Kabupaten Bener Meriah,2025,10.766984505363528,Perlu Peningkatan,Perlu Peningkatan,7.156571428571429,Baik,Baik,9.362473347547974,Baik,Baik,6.758064516129032,Baik,Baik
+Kabupaten Bireuen,2016,8.777603758809711,Baik,Baik,7.65417224453369,Baik,Baik,8.838132295719845,Baik,Baik,7.747706422018348,Baik,Perlu Peningkatan
+Kabupaten Bireuen,2017,8.394945111054378,Baik,Baik,7.428761651131825,Baik,Baik,8.32857142857143,Baik,Baik,7.959731543624161,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Bireuen,2018,8.920235546038544,Baik,Baik,7.274172185430464,Baik,Baik,7.897853441894893,Baik,Baik,7.925764192139738,Baik,Baik
+Kabupaten Bireuen,2019,8.777603758809711,Baik,Baik,8.304922515952597,Baik,Baik,8.701540957015409,Baik,Baik,7.910256410256411,Baik,Baik
+Kabupaten Bireuen,2020,8.602616726526424,Baik,Baik,8.471320586927524,Baik,Baik,8.34154090548054,Baik,Baik,7.545824847250509,Baik,Baik
+Kabupaten Bireuen,2021,8.782608695652174,Baik,Baik,8.765814266487213,Perlu Peningkatan,Baik,8.598645215918713,Baik,Baik,7.86875,Baik,Perlu Peningkatan
+Kabupaten Bireuen,2022,8.680707228289132,Baik,Baik,8.42212389380531,Baik,Baik,8.676068376068375,Baik,Baik,8.367768595041323,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Bireuen,2023,8.732919254658386,Baik,Baik,8.45037494486105,Baik,Baik,9.125649913344887,Baik,Baik,8.383399209486166,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Bireuen,2024,8.784904688304998,Baik,Baik,8.401994796183867,Baik,Baik,9.383233532934131,Baik,Baik,8.652427184466019,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Bireuen,2025,8.997929070670464,Baik,Baik,8.07080745341615,Baik,Baik,9.830985915492958,Perlu Peningkatan,Baik,9.115384615384615,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Gayo Lues,2016,12.279775280898876,Perlu Peningkatan,Perlu Peningkatan,12.071641791044776,Perlu Peningkatan,Perlu Peningkatan,11.062962962962963,Perlu Peningkatan,Perlu Peningkatan,6.169491525423729,Baik,Baik
+Kabupaten Gayo Lues,2017,14.42722371967655,Perlu Peningkatan,Perlu Peningkatan,11.596590909090908,Perlu Peningkatan,Perlu Peningkatan,11.129151291512915,Perlu Peningkatan,Perlu Peningkatan,6.363636363636363,Baik,Baik
+Kabupaten Gayo Lues,2018,14.869198312236287,Perlu Peningkatan,Perlu Peningkatan,13.025974025974026,Perlu Peningkatan,Perlu Peningkatan,10.83969465648855,Perlu Peningkatan,Perlu Peningkatan,5.285714285714286,Baik,Baik
+Kabupaten Gayo Lues,2019,12.279775280898876,Perlu Peningkatan,Perlu Peningkatan,10.094890510948906,Perlu Peningkatan,Baik,10.522556390977444,Perlu Peningkatan,Perlu Peningkatan,4.303571428571429,Baik,Baik
+Kabupaten Gayo Lues,2020,11.060817547357926,Perlu Peningkatan,Perlu Peningkatan,7.531187122736418,Baik,Baik,10.54275092936803,Perlu Peningkatan,Perlu Peningkatan,4.714285714285714,Baik,Baik
+Kabupaten Gayo Lues,2021,11.16781836130306,Perlu Peningkatan,Perlu Peningkatan,6.898520084566596,Baik,Baik,10.62406015037594,Perlu Peningkatan,Perlu Peningkatan,5.142857142857143,Baik,Baik
+Kabupaten Gayo Lues,2022,10.56120527306968,Baik,Baik,6.827651515151516,Baik,Baik,9.703971119133573,Baik,Baik,4.333333333333333,Baik,Baik
+Kabupaten Gayo Lues,2023,10.7680608365019,Perlu Peningkatan,Baik,6.81374321880651,Baik,Baik,9.107266435986158,Baik,Baik,4.012820512820513,Baik,Baik
+Kabupaten Gayo Lues,2024,10.979846449136277,Perlu Peningkatan,Baik,7.873983739837398,Baik,Baik,9.06081081081081,Baik,Baik,4.0,Baik,Baik
+Kabupaten Gayo Lues,2025,10.914634146341463,Perlu Peningkatan,Perlu Peningkatan,7.363288718929255,Baik,Baik,9.38,Baik,Baik,4.75,Baik,Baik
+Kabupaten Nagan Raya,2016,10.007294429708223,Baik,Baik,9.102831594634873,Perlu Peningkatan,Perlu Peningkatan,11.085393258426967,Perlu Peningkatan,Perlu Peningkatan,8.523255813953488,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2017,10.368089573128062,Baik,Baik,9.111287758346581,Perlu Peningkatan,Perlu Peningkatan,10.46325167037862,Perlu Peningkatan,Perlu Peningkatan,10.875,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2018,10.652142857142858,Perlu Peningkatan,Perlu Peningkatan,9.349337748344372,Perlu Peningkatan,Perlu Peningkatan,9.662192393736017,Baik,Baik,10.604651162790697,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2019,10.007294429708223,Baik,Baik,9.150470219435737,Perlu Peningkatan,Perlu Peningkatan,9.46606334841629,Baik,Perlu Peningkatan,10.358695652173912,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2020,9.02937576499388,Baik,Baik,8.431034482758621,Baik,Baik,8.52967032967033,Baik,Perlu Peningkatan,9.911111111111111,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2021,9.471135940409683,Baik,Baik,8.537777777777778,Perlu Peningkatan,Perlu Peningkatan,9.15,Baik,Baik,8.95,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Nagan Raya,2022,9.351186853317103,Baik,Baik,8.079658605974396,Baik,Baik,9.385844748858448,Baik,Baik,7.51,Baik,Perlu Peningkatan
+Kabupaten Nagan Raya,2023,9.323424494649228,Baik,Baik,8.46927374301676,Baik,Baik,9.712087912087911,Perlu Peningkatan,Perlu Peningkatan,7.422680412371134,Baik,Perlu Peningkatan
+Kabupaten Nagan Raya,2024,9.291521486643438,Baik,Baik,9.332869080779945,Perlu Peningkatan,Baik,9.778021978021979,Perlu Peningkatan,Perlu Peningkatan,7.44,Baik,Baik
+Kabupaten Nagan Raya,2025,9.321387940841866,Baik,Baik,9.521917808219179,Perlu Peningkatan,Baik,9.925274725274726,Perlu Peningkatan,Perlu Peningkatan,7.805825242718447,Baik,Baik
+Kabupaten Pidie,2016,8.365439770554493,Baik,Baik,7.646302250803859,Baik,Baik,9.094754653130288,Baik,Baik,8.828254847645429,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2017,8.60377358490566,Baik,Baik,7.026395939086294,Baik,Baik,8.832365145228216,Baik,Baik,9.116402116402117,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2018,8.729689807976367,Baik,Baik,7.021860701576004,Baik,Baik,8.139723801787165,Baik,Baik,8.917525773195877,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2019,8.365439770554493,Baik,Baik,7.14334637964775,Baik,Baik,8.126760563380282,Baik,Baik,8.753148614609572,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2020,8.079652255639099,Baik,Baik,7.051342439943476,Baik,Baik,7.689430894308943,Baik,Baik,8.29951690821256,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2021,8.336334874665368,Baik,Baik,6.957115928369463,Baik,Baik,8.33007985803017,Baik,Baik,8.549504950495049,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2022,8.138668589281423,Baik,Baik,6.70889748549323,Baik,Baik,8.945602901178605,Baik,Baik,8.393564356435643,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2023,8.174059787849567,Baik,Baik,6.668472906403941,Baik,Baik,9.727019498607243,Perlu Peningkatan,Baik,8.412587412587413,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2024,8.211417513304307,Baik,Baik,6.902129817444219,Baik,Baik,9.753176043557168,Perlu Peningkatan,Baik,8.054704595185996,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie,2025,8.178115208483971,Baik,Baik,6.930682976554536,Baik,Baik,9.313513513513513,Baik,Baik,8.146997929606625,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Pidie Jaya,2016,6.395139989434759,Baik,Baik,6.007142857142857,Baik,Baik,7.075247524752475,Baik,Baik,5.533333333333333,Baik,Baik
+Kabupaten Pidie Jaya,2017,6.512513601741023,Baik,Baik,6.1940298507462686,Baik,Baik,6.980694980694981,Baik,Baik,5.111675126903553,Baik,Baik
+Kabupaten Pidie Jaya,2018,6.525515743756786,Baik,Baik,6.148883374689826,Baik,Baik,6.701348747591522,Baik,Baik,4.990384615384615,Baik,Baik
+Kabupaten Pidie Jaya,2019,6.395139989434759,Baik,Baik,6.359375,Baik,Baik,6.890873015873016,Baik,Baik,4.885844748858448,Baik,Baik
+Kabupaten Pidie Jaya,2020,6.452293094359515,Baik,Baik,6.27732079905993,Baik,Baik,6.668582375478927,Baik,Baik,4.859649122807017,Baik,Baik
+Kabupaten Pidie Jaya,2021,6.68613537117904,Baik,Baik,6.2146171693735495,Baik,Baik,7.277777777777778,Baik,Baik,5.343891402714932,Baik,Baik
+Kabupaten Pidie Jaya,2022,6.643828167482328,Baik,Baik,5.8597701149425285,Baik,Baik,7.485232067510548,Baik,Baik,5.606334841628959,Baik,Baik
+Kabupaten Pidie Jaya,2023,6.725586470267321,Baik,Baik,5.730504587155964,Baik,Baik,8.154867256637168,Baik,Baik,6.299559471365638,Baik,Baik
+Kabupaten Pidie Jaya,2024,6.8084291187739465,Baik,Baik,5.776,Baik,Baik,8.48993288590604,Baik,Baik,6.6347826086956525,Baik,Baik
+Kabupaten Pidie Jaya,2025,6.721896643580181,Baik,Baik,5.921387283236994,Baik,Baik,8.35022026431718,Baik,Baik,6.825726141078838,Baik,Baik
+Kabupaten Simeulue,2016,6.698770491803279,Baik,Baik,8.585412667946256,Perlu Peningkatan,Perlu Peningkatan,9.420212765957446,Baik,Baik,8.261194029850746,Perlu Peningkatan,Perlu Peningkatan
+Kabupaten Simeulue,2017,7.076601671309192,Baik,Baik,9.005952380952381,Perlu Peningkatan,Perlu Peningkatan,8.661764705882353,Baik,Baik,6.935897435897436,Baik,Baik
+Kabupaten Simeulue,2018,7.051687006460876,Baik,Baik,8.596986817325801,Perlu Peningkatan,Perlu Peningkatan,8.23855421686747,Baik,Baik,6.933333333333334,Baik,Baik
+Kabupaten Simeulue,2019,6.698770491803279,Baik,Baik,8.25925925925926,Baik,Baik,8.38443396226415,Baik,Baik,6.923611111111111,Baik,Baik
+Kabupaten Simeulue,2020,6.026282853566959,Baik,Baik,6.690184049079755,Baik,Baik,7.405349794238683,Baik,Baik,6.197604790419161,Baik,Baik
+Kabupaten Simeulue,2021,6.277957336780866,Baik,Baik,6.082706766917293,Baik,Baik,9.10561797752809,Baik,Baik,6.546052631578948,Baik,Baik
+Kabupaten Simeulue,2022,6.125790139064476,Baik,Baik,5.2635983263598325,Baik,Baik,7.871951219512195,Baik,Baik,6.375,Baik,Baik
+Kabupaten Simeulue,2023,5.827710843373494,Baik,Baik,5.11978465679677,Baik,Baik,7.702912621359223,Baik,Baik,4.5638297872340425,Baik,Baik
+Kabupaten Simeulue,2024,5.5595854922279795,Baik,Baik,5.239895697522816,Baik,Baik,7.739837398373984,Baik,Baik,4.190476190476191,Baik,Baik
+Kabupaten Simeulue,2025,5.418222976796831,Baik,Baik,5.405475880052151,Baik,Baik,7.5030549898167,Baik,Baik,3.6823529411764704,Baik,Baik
+Kota Banda Aceh,2016,18.885182311869666,Perlu Peningkatan,Perlu Peningkatan,11.704081632653061,Perlu Peningkatan,Perlu Peningkatan,10.355455568053992,Perlu Peningkatan,Perlu Peningkatan,10.783333333333333,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2017,19.638245033112582,Perlu Peningkatan,Perlu Peningkatan,11.88036410923277,Perlu Peningkatan,Perlu Peningkatan,10.832568807339449,Perlu Peningkatan,Perlu Peningkatan,11.576502732240437,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2018,19.864238410596027,Perlu Peningkatan,Perlu Peningkatan,13.069986541049799,Perlu Peningkatan,Perlu Peningkatan,10.836216839677046,Perlu Peningkatan,Perlu Peningkatan,11.628342245989305,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2019,18.885182311869666,Perlu Peningkatan,Perlu Peningkatan,13.190237797246558,Perlu Peningkatan,Perlu Peningkatan,11.260257913247361,Perlu Peningkatan,Perlu Peningkatan,11.708661417322835,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2020,17.536337209302324,Perlu Peningkatan,Perlu Peningkatan,13.499398315282791,Perlu Peningkatan,Perlu Peningkatan,10.381984036488028,Perlu Peningkatan,Perlu Peningkatan,10.640586797066014,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2021,17.093950177935945,Perlu Peningkatan,Perlu Peningkatan,13.277506112469437,Perlu Peningkatan,Perlu Peningkatan,11.95910780669145,Perlu Peningkatan,Perlu Peningkatan,12.128266033254157,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2022,16.77247579529737,Perlu Peningkatan,Perlu Peningkatan,12.934466019417476,Perlu Peningkatan,Perlu Peningkatan,11.672832369942197,Perlu Peningkatan,Perlu Peningkatan,11.680387409200968,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2023,16.861149110807112,Perlu Peningkatan,Perlu Peningkatan,12.90952380952381,Perlu Peningkatan,Perlu Peningkatan,12.3561190738699,Perlu Peningkatan,Perlu Peningkatan,11.456709956709958,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2024,16.936443542934416,Perlu Peningkatan,Perlu Peningkatan,12.830527497194163,Perlu Peningkatan,Perlu Peningkatan,11.874233128834355,Perlu Peningkatan,Perlu Peningkatan,11.097510373443983,Perlu Peningkatan,Perlu Peningkatan
+Kota Banda Aceh,2025,16.965721819380356,Perlu Peningkatan,Perlu Peningkatan,13.900684931506849,Perlu Peningkatan,Perlu Peningkatan,11.8970736629667,Perlu Peningkatan,Perlu Peningkatan,11.417355371900827,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2016,13.874196510560147,Perlu Peningkatan,Perlu Peningkatan,11.294827586206896,Perlu Peningkatan,Perlu Peningkatan,12.35632183908046,Perlu Peningkatan,Perlu Peningkatan,9.547945205479452,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2017,13.636446056210335,Perlu Peningkatan,Perlu Peningkatan,10.883561643835616,Perlu Peningkatan,Perlu Peningkatan,12.241176470588234,Perlu Peningkatan,Perlu Peningkatan,10.164864864864866,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2018,14.44603629417383,Perlu Peningkatan,Perlu Peningkatan,10.412645590682196,Perlu Peningkatan,Perlu Peningkatan,11.118155619596541,Perlu Peningkatan,Perlu Peningkatan,10.46236559139785,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2019,13.874196510560147,Perlu Peningkatan,Perlu Peningkatan,10.935064935064934,Perlu Peningkatan,Perlu Peningkatan,11.44984802431611,Perlu Peningkatan,Perlu Peningkatan,10.788203753351207,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2020,12.842794759825328,Perlu Peningkatan,Perlu Peningkatan,10.51177394034537,Perlu Peningkatan,Perlu Peningkatan,10.349431818181818,Perlu Peningkatan,Perlu Peningkatan,9.926395939086294,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2021,13.397556390977444,Perlu Peningkatan,Perlu Peningkatan,10.4848,Perlu Peningkatan,Perlu Peningkatan,11.570987654320987,Perlu Peningkatan,Perlu Peningkatan,10.52892561983471,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2022,12.887232059645854,Perlu Peningkatan,Perlu Peningkatan,10.537704918032787,Perlu Peningkatan,Perlu Peningkatan,12.697530864197532,Perlu Peningkatan,Perlu Peningkatan,9.03957783641161,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2023,12.879472693032016,Perlu Peningkatan,Perlu Peningkatan,11.086882453151619,Perlu Peningkatan,Perlu Peningkatan,12.580174927113703,Perlu Peningkatan,Perlu Peningkatan,9.082228116710874,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2024,12.870599429115128,Perlu Peningkatan,Perlu Peningkatan,12.066549912434326,Perlu Peningkatan,Perlu Peningkatan,12.616045845272206,Perlu Peningkatan,Perlu Peningkatan,9.204188481675393,Perlu Peningkatan,Perlu Peningkatan
+Kota Langsa,2025,13.0732635585157,Perlu Peningkatan,Perlu Peningkatan,12.399647887323944,Perlu Peningkatan,Perlu Peningkatan,13.026162790697674,Perlu Peningkatan,Perlu Peningkatan,9.88888888888889,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2016,13.500370644922164,Perlu Peningkatan,Perlu Peningkatan,11.111898016997166,Perlu Peningkatan,Perlu Peningkatan,9.411764705882353,Baik,Perlu Peningkatan,9.297029702970297,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2017,13.573795180722891,Perlu Peningkatan,Perlu Peningkatan,9.74875,Perlu Peningkatan,Perlu Peningkatan,8.894211576846308,Baik,Baik,9.041292639138241,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2018,13.68,Perlu Peningkatan,Perlu Peningkatan,9.586163522012578,Perlu Peningkatan,Perlu Peningkatan,8.781512605042018,Baik,Baik,9.454198473282442,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2019,13.500370644922164,Perlu Peningkatan,Perlu Peningkatan,9.79746835443038,Perlu Peningkatan,Perlu Peningkatan,9.153669724770642,Baik,Baik,9.944897959183674,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2020,13.007194244604317,Perlu Peningkatan,Perlu Peningkatan,9.743718592964823,Perlu Peningkatan,Perlu Peningkatan,8.570454545454545,Baik,Baik,9.180392156862744,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2021,13.01978021978022,Perlu Peningkatan,Perlu Peningkatan,9.973924380704041,Perlu Peningkatan,Perlu Peningkatan,8.977329974811083,Baik,Baik,9.70281124497992,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2022,12.507607192254495,Perlu Peningkatan,Perlu Peningkatan,9.913385826771654,Perlu Peningkatan,Perlu Peningkatan,9.906666666666666,Perlu Peningkatan,Perlu Peningkatan,8.815040650406504,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2023,12.759002770083102,Perlu Peningkatan,Perlu Peningkatan,10.702364394993046,Perlu Peningkatan,Perlu Peningkatan,10.58311345646438,Perlu Peningkatan,Perlu Peningkatan,9.081135902636916,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2024,13.020124913254683,Perlu Peningkatan,Perlu Peningkatan,10.630936227951153,Perlu Peningkatan,Perlu Peningkatan,10.635,Perlu Peningkatan,Perlu Peningkatan,9.169354838709678,Perlu Peningkatan,Perlu Peningkatan
+Kota Lhokseumawe,2025,13.345670391061452,Perlu Peningkatan,Perlu Peningkatan,10.976190476190476,Perlu Peningkatan,Perlu Peningkatan,10.260240963855422,Perlu Peningkatan,Perlu Peningkatan,8.996108949416342,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2016,9.616707616707616,Baik,Baik,5.462121212121212,Baik,Baik,7.467625899280575,Baik,Baik,4.23404255319149,Baik,Baik
+Kota Sabang,2017,9.41421568627451,Baik,Baik,6.510460251046025,Baik,Baik,7.453237410071942,Baik,Baik,4.956521739130435,Baik,Baik
+Kota Sabang,2018,10.0,Baik,Baik,6.701680672268908,Baik,Baik,8.521008403361344,Baik,Perlu Peningkatan,6.372093023255814,Baik,Baik
+Kota Sabang,2019,9.616707616707616,Baik,Baik,6.5875,Baik,Baik,10.55,Perlu Peningkatan,Perlu Peningkatan,7.975,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2020,9.6848635235732,Baik,Baik,6.0505836575875485,Baik,Baik,11.254901960784315,Perlu Peningkatan,Perlu Peningkatan,8.195121951219512,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2021,9.56,Baik,Baik,6.670886075949367,Baik,Baik,11.904761904761905,Perlu Peningkatan,Perlu Peningkatan,9.763157894736842,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2022,9.596009975062344,Baik,Baik,7.013274336283186,Baik,Baik,10.972477064220184,Perlu Peningkatan,Perlu Peningkatan,8.25,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2023,9.464646464646465,Baik,Baik,7.301369863013699,Baik,Baik,11.759615384615385,Perlu Peningkatan,Perlu Peningkatan,8.466666666666667,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2024,9.353846153846154,Baik,Baik,7.23394495412844,Baik,Baik,11.141592920353983,Perlu Peningkatan,Perlu Peningkatan,8.577777777777778,Perlu Peningkatan,Perlu Peningkatan
+Kota Sabang,2025,9.380829015544041,Baik,Baik,7.631578947368421,Baik,Baik,11.537037037037036,Perlu Peningkatan,Perlu Peningkatan,8.73913043478261,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2016,12.972162740899357,Perlu Peningkatan,Perlu Peningkatan,13.215873015873015,Perlu Peningkatan,Perlu Peningkatan,15.21359223300971,Perlu Peningkatan,Perlu Peningkatan,13.683168316831683,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2017,12.99322033898305,Perlu Peningkatan,Perlu Peningkatan,13.748407643312103,Perlu Peningkatan,Perlu Peningkatan,13.899563318777293,Perlu Peningkatan,Perlu Peningkatan,12.163793103448276,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2018,13.527167630057804,Perlu Peningkatan,Perlu Peningkatan,13.122641509433961,Perlu Peningkatan,Perlu Peningkatan,13.787755102040816,Perlu Peningkatan,Perlu Peningkatan,11.65625,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2019,12.972162740899357,Perlu Peningkatan,Perlu Peningkatan,13.81437125748503,Perlu Peningkatan,Perlu Peningkatan,13.845528455284553,Perlu Peningkatan,Perlu Peningkatan,11.323741007194245,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2020,12.894957983193278,Perlu Peningkatan,Perlu Peningkatan,12.760445682451254,Perlu Peningkatan,Perlu Peningkatan,12.106060606060606,Perlu Peningkatan,Perlu Peningkatan,10.61744966442953,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2021,12.710607621009268,Perlu Peningkatan,Perlu Peningkatan,13.044321329639889,Perlu Peningkatan,Perlu Peningkatan,12.512195121951219,Perlu Peningkatan,Perlu Peningkatan,9.396341463414634,Perlu Peningkatan,Perlu Peningkatan
+Kota Subulussalam,2022,11.907265774378585,Perlu Peningkatan,Perlu Peningkatan,11.525252525252526,Perlu Peningkatan,Perlu Peningkatan,11.815686274509805,Perlu Peningkatan,Perlu Peningkatan,8.163742690058479,Perlu Peningkatan,Baik
+Kota Subulussalam,2023,11.757129714811407,Perlu Peningkatan,Perlu Peningkatan,10.929411764705883,Perlu Peningkatan,Perlu Peningkatan,11.073260073260073,Perlu Peningkatan,Perlu Peningkatan,7.14207650273224,Baik,Baik
+Kota Subulussalam,2024,11.617021276595745,Perlu Peningkatan,Perlu Peningkatan,10.875862068965517,Perlu Peningkatan,Perlu Peningkatan,11.598513011152416,Perlu Peningkatan,Perlu Peningkatan,6.956756756756757,Baik,Baik
+Kota Subulussalam,2025,11.481067125645438,Perlu Peningkatan,Perlu Peningkatan,10.251572327044025,Perlu Peningkatan,Perlu Peningkatan,11.195804195804195,Perlu Peningkatan,Perlu Peningkatan,7.158469945355192,Baik,Baik
