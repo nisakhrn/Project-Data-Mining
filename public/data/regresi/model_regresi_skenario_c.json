@@ -1,0 +1,44 @@
+{
+  "Jumlah_Murid_SD": {
+    "slope": 421.4176,
+    "intercept": 133746.4824,
+    "r2": 0.0275,
+    "tahun_terakhir_data": 2025
+  },
+  "Jumlah_Murid_SMP": {
+    "slope": 3700.8121,
+    "intercept": -7074713.0909,
+    "r2": 0.6836,
+    "tahun_terakhir_data": 2025
+  },
+  "Jumlah_Murid_SMA": {
+    "slope": 1062.8242,
+    "intercept": -1875965.7818,
+    "r2": 0.131,
+    "tahun_terakhir_data": 2025
+  },
+  "Jumlah_Murid_SMK": {
+    "slope": 648.1412,
+    "intercept": -1200179.9529,
+    "r2": 0.2233,
+    "tahun_terakhir_data": 2025
+  },
+  "Rata-rata_Lama_Sekolah": {
+    "slope": 0.1041,
+    "intercept": -200.9099,
+    "r2": 0.9786,
+    "tahun_terakhir_data": 2024
+  },
+  "Harapan_Lama_Sekolah": {
+    "slope": 0.0784,
+    "intercept": -144.0126,
+    "r2": 0.9867,
+    "tahun_terakhir_data": 2024
+  },
+  "Angka_Melek_Huruf": {
+    "slope": 0.0614,
+    "intercept": -26.1175,
+    "r2": 0.9605,
+    "tahun_terakhir_data": 2024
+  }
+}

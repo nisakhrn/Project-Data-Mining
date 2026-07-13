@@ -8,6 +8,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import './App.css';
+import ProyeksiInteraktif from './components/ProyeksiInteraktif';
 
 const pilihKunci = (kolom, kandidat, fallback = '') => {
   const ditemukan = kandidat.find((item) => kolom.includes(item));
@@ -31,6 +32,7 @@ export default function App() {
   const [kategoriUtama, setKategoriUtama] = useState('sekolah');
   const [modeBeasiswaAktif, setModeBeasiswaAktif] = useState('klasifikasi');
   const [halamanAktif, setHalamanAktif] = useState('evaluasi');
+  const [tampilanRegresi, setTampilanRegresi] = useState('grafik'); // 'grafik' | 'interaktif'
   const [dataGrafik, setDataGrafik] = useState([]);
   const [csvAktif, setCsvAktif] = useState('/data/klasifikasi/hasil_klasifikasi.csv');
   const [kataKunci, setKataKunci] = useState('');
@@ -389,7 +391,12 @@ export default function App() {
             return null;
           }
 
-          const nilai = Number(dataVariabel[namaKolom]);
+          const nilaiMentah = dataVariabel[namaKolom];
+          if (nilaiMentah === null || nilaiMentah === undefined || nilaiMentah === '') {
+            return null;
+          }
+
+          const nilai = Number(nilaiMentah);
           if (!Number.isFinite(nilai)) {
             return null;
           }
@@ -726,9 +733,30 @@ export default function App() {
                 </div>
               </>
             )}
+
+            {!sedangBeasiswa && halamanAktif === 'proyeksi' && (
+              <div className="mode-toggle" role="tablist" aria-label="Tampilan regresi" style={{ marginTop: 8 }}>
+                <button
+                  className={tampilanRegresi === 'grafik' ? 'mode-btn active' : 'mode-btn'}
+                  onClick={() => setTampilanRegresi('grafik')}
+                >
+                  Grafik Historis
+                </button>
+                <button
+                  className={tampilanRegresi === 'interaktif' ? 'mode-btn active' : 'mode-btn'}
+                  onClick={() => setTampilanRegresi('interaktif')}
+                >
+                  Proyeksi Interaktif
+                </button>
+              </div>
+            )}
           </aside>
 
           <div className="results-panel">
+            {halamanAktif === 'proyeksi' && tampilanRegresi === 'interaktif' ? (
+              <ProyeksiInteraktif />
+            ) : (
+              <>
             {sedangPrioritasBantuan && (
               <div className="kpi-grid">
                 <article className="kpi-card">
@@ -868,6 +896,8 @@ export default function App() {
 
               <div className={halamanAktif === 'evaluasi' ? 'chart-wrap tall' : 'chart-wrap'}>{renderGrafik()}</div>
             </article>
+              </>
+            )}
           </div>
         </section>
       </main>
