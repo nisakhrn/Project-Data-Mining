@@ -44,6 +44,7 @@ export default function App() {
   const [isProyeksiWide, setIsProyeksiWide] = useState(false);
   const [daftarVariabelProyeksi, setDaftarVariabelProyeksi] = useState([]);
   const [variabelProyeksiAktif, setVariabelProyeksiAktif] = useState('');
+  const [historisRegresi, setHistorisRegresi] = useState(null);
   const [opsiJenjang, setOpsiJenjang] = useState([]);
   const [jenjangAktif, setJenjangAktif] = useState('');
   const [ringkasanUtama, setRingkasanUtama] = useState({
@@ -94,6 +95,13 @@ export default function App() {
     { nama: 'Klastering', status: 'Segera', keterangan: 'Pengelompokan wilayah berdasarkan pola indikator.' },
     { nama: 'Regresi', status: 'Aktif', keterangan: 'Proyeksi tren indikator lintas bidang ke depan.' }
   ];
+
+  useEffect(() => {
+    fetch('/data/regresi/data_historis_skenario_c.json')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => setHistorisRegresi(data))
+      .catch(() => setHistorisRegresi(null));
+  }, []);
 
   useEffect(() => {
     Papa.parse(csvAktif, {
@@ -411,7 +419,30 @@ export default function App() {
         return [];
       }
 
-      return seriTahun;
+      // Cocokkan label CSV (mis. "Jumlah Murid SD (Provinsi Aceh)") ke kunci JSON historis
+      // (mis. "Jumlah_Murid_SD"), lalu gabungkan jadi satu rangkaian: garis historis asli + garis proyeksi.
+      const kunciHistoris = variabelProyeksiAktif.split(' (')[0].trim().replace(/\s+/g, '_');
+      const dataHistorisVariabel = historisRegresi ? historisRegresi[kunciHistoris] : null;
+
+      if (dataHistorisVariabel && dataHistorisVariabel.length > 0) {
+        const titikHistoris = [...dataHistorisVariabel]
+          .sort((a, b) => a.tahun - b.tahun)
+          .map((row) => ({ tahun: row.tahun, aktual: row.nilai }));
+
+        const tahunHistorisTerakhir = titikHistoris[titikHistoris.length - 1].tahun;
+        const nilaiHistorisTerakhir = titikHistoris[titikHistoris.length - 1].aktual;
+
+        const titikProyeksi = [
+          { tahun: tahunHistorisTerakhir, proyeksi: nilaiHistorisTerakhir },
+          ...seriTahun
+            .filter((titik) => titik.tahun > tahunHistorisTerakhir)
+            .map((titik) => ({ tahun: titik.tahun, proyeksi: titik.prediksi }))
+        ];
+
+        return [...titikHistoris, ...titikProyeksi];
+      }
+
+      return seriTahun.map((titik) => ({ tahun: titik.tahun, proyeksi: titik.prediksi }));
     }
 
     const kata = kataKunci.trim().toLowerCase();
@@ -460,6 +491,7 @@ export default function App() {
   }, [
     dataGrafik,
     halamanAktif,
+    historisRegresi,
     isProyeksiWide,
     kataKunci,
     kunciLabel,
@@ -553,21 +585,59 @@ export default function App() {
     }
 
     if (isProyeksiWide) {
+      const nilaiValid = dataTampil
+        .flatMap((d) => [d.aktual, d.proyeksi])
+        .filter((v) => typeof v === 'number' && Number.isFinite(v));
+
+      let domainY = ['auto', 'auto'];
+      if (nilaiValid.length > 0) {
+        const nilaiMin = Math.min(...nilaiValid);
+        const nilaiMax = Math.max(...nilaiValid);
+        const jarak = nilaiMax - nilaiMin;
+        const padding = jarak > 0 ? jarak * 0.2 : Math.abs(nilaiMax) * 0.05 || 1;
+        domainY = [nilaiMin - padding, nilaiMax + padding];
+      }
+
+      const adaDataHistoris = dataTampil.some((d) => typeof d.aktual === 'number');
+
       return (
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={dataTampil} margin={{ top: 16, right: 24, left: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="4 4" stroke="#ebeef3" />
             <XAxis dataKey="tahun" tick={{ fill: '#657188' }} axisLine={false} tickLine={false} />
-            <YAxis tick={{ fill: '#657188' }} axisLine={false} tickLine={false} />
-            <Tooltip contentStyle={{ borderRadius: '10px', borderColor: '#e8ebf0' }} />
+            <YAxis
+              tick={{ fill: '#657188' }}
+              axisLine={false}
+              tickLine={false}
+              domain={domainY}
+              allowDecimals
+              tickFormatter={(v) => new Intl.NumberFormat('id-ID', { maximumFractionDigits: 2 }).format(v)}
+            />
+            <Tooltip
+              formatter={(v) => new Intl.NumberFormat('id-ID', { maximumFractionDigits: 2 }).format(v)}
+              contentStyle={{ borderRadius: '10px', borderColor: '#e8ebf0' }}
+            />
             <Legend />
+            {adaDataHistoris && (
+              <Line
+                type="monotone"
+                dataKey="aktual"
+                name="Data Historis Asli"
+                stroke="#2a78d6"
+                strokeWidth={2}
+                dot={{ r: 3 }}
+                connectNulls={false}
+              />
+            )}
             <Line
               type="monotone"
-              dataKey="prediksi"
-              name="Nilai Proyeksi"
+              dataKey="proyeksi"
+              name="Garis Proyeksi (Model)"
               stroke="#eb2b39"
-              strokeWidth={3}
+              strokeWidth={2}
+              strokeDasharray={adaDataHistoris ? '6 4' : undefined}
               activeDot={{ r: 6 }}
+              connectNulls
             />
           </LineChart>
         </ResponsiveContainer>
