@@ -175,8 +175,6 @@
 
 .filter-panel {
   padding: 16px;
-  position: sticky;
-  top: 88px;
 }
 
 .filter-panel h3 {
@@ -415,13 +413,18 @@
 }
 
 .search-box input {
-  min-width: 220px;
+  width: 180px;
+  min-width: 140px;
   padding: 0 14px;
 }
 
 .results-controls select {
-  min-width: 132px;
+  max-width: 240px;
+  min-width: 120px;
   padding: 0 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .results-controls select:disabled {

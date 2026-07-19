@@ -28,6 +28,8 @@ const formatAngkaRapi = (value) => {
   return value.toFixed(2).replace(/\.00$/, '').replace(/(\.\d*[1-9])0$/, '$1');
 };
 
+const formatCluster = (cluster) => `Cluster ${cluster}`;
+
 export default function App() {
   const [kategoriUtama, setKategoriUtama] = useState('sekolah');
   const [modeBeasiswaAktif, setModeBeasiswaAktif] = useState('klasifikasi');
@@ -57,6 +59,8 @@ export default function App() {
     tahunTerbaru: ''
   });
 
+  const [rawClusteringData, setRawClusteringData] = useState([]);
+
   const menuKlasifikasi = [
     { label: "Hasil Keseluruhan", path: "/data/klasifikasi/hasil_klasifikasi.csv" },
     { label: "Distribusi Prioritas Bantuan", path: "/data/klasifikasi/hasil_klasifikasi_prioritas.csv" },
@@ -68,6 +72,67 @@ export default function App() {
   const menuRegresi = [
     { label: "Proyeksi Skenario C", path: "/data/regresi/hasil_proyeksi_skenario_c.csv" },
   ];
+
+  const menuClustering = [
+    { label: 'Tema 1 - Rasio Sekolah & Guru', path: '/data/clustering/hasil_cluster_tema1.csv' },
+    { label: 'Tema 2 - Jumlah Sekolah, Guru, Murid', path: '/data/clustering/hasil_cluster_tema2.csv' },
+    { label: 'Tema 3 - Proporsi & Rasio Sekolah Swasta', path: '/data/clustering/hasil_cluster_tema3.csv' },
+    { label: 'Tema 4 - Proporsi SMA & SMK (Sekolah Menengah)', path: '/data/clustering/hasil_cluster_tema4.csv' },
+    { label: 'Tema 5 - Proporsi Sekolah Dasar (SD)', path: '/data/clustering/hasil_cluster_tema5.csv' }
+  ];
+
+  const keteranganClustering = {
+    '/data/clustering/hasil_cluster_tema1.csv': [
+      {
+        cluster: 'Cluster 0',
+        ringkasan: 'Wilayah dengan rasio murid/guru dan murid/sekolah yang relatif rendah, menandakan sebaran guru yang lebih memadai dan kondisi belajar mengajar yang lebih kondusif.'
+      },
+      {
+        cluster: 'Cluster 1',
+        ringkasan: 'Wilayah dengan rasio murid/guru dan murid/sekolah yang tinggi, mengindikasikan beban mengajar guru yang lebih berat serta potensi kepadatan kelas yang lebih tinggi.'
+      }
+    ],
+    '/data/clustering/hasil_cluster_tema2.csv': [
+      {
+        cluster: 'Cluster 0',
+        ringkasan: 'Wilayah dengan skala aktivitas pendidikan kecil hingga menengah, dicirikan oleh jumlah sekolah, guru, dan murid yang relatif lebih sedikit.'
+      },
+      {
+        cluster: 'Cluster 1',
+        ringkasan: 'Wilayah dengan skala aktivitas pendidikan sangat besar, dicirikan oleh jumlah sebaran sekolah, guru, dan populasi murid yang melimpah.'
+      }
+    ],
+    '/data/clustering/hasil_cluster_tema3.csv': [
+      {
+        cluster: 'Cluster 0',
+        ringkasan: 'Wilayah dengan proporsi sekolah swasta yang relatif lebih tinggi, menunjukkan peran yayasan/sektor swasta yang lebih kuat dalam layanan pendidikan.'
+      },
+      {
+        cluster: 'Cluster 1',
+        ringkasan: 'Wilayah didominasi oleh sekolah negeri, di mana proporsi sekolah, murid, dan guru swasta cenderung sangat rendah.'
+      }
+    ],
+    '/data/clustering/hasil_cluster_tema4.csv': [
+      {
+        cluster: 'Cluster 0',
+        ringkasan: 'Wilayah dengan dominasi kuat Sekolah Menengah Atas (SMA) dibandingkan Sekolah Menengah Kejuruan (SMK) pada jumlah sekolah, guru, dan murid.'
+      },
+      {
+        cluster: 'Cluster 1',
+        ringkasan: 'Wilayah perkotaan dengan komposisi SMA dan SMK yang relatif berimbang atau dengan proporsi SMK yang lebih menonjol.'
+      }
+    ],
+    '/data/clustering/hasil_cluster_tema5.csv': [
+      {
+        cluster: 'Cluster 0',
+        ringkasan: 'Wilayah dengan proporsi Sekolah Dasar (SD) yang sangat tinggi (mendominasi total sekolah), umum terjadi di daerah kabupaten.'
+      },
+      {
+        cluster: 'Cluster 1',
+        ringkasan: 'Wilayah perkotaan dengan proporsi Sekolah Dasar yang lebih rendah karena sebaran sekolah menengah (SMP/SMA/SMK) lebih merata.'
+      }
+    ]
+  };
 
   const menuBeasiswaKlasifikasi = [
     { label: "Penerima Beasiswa", path: "/data/beasiswa/klasifikasi/hasil_penerima_beasiswa.csv" },
@@ -92,7 +157,7 @@ export default function App() {
 
   const modulAnalitik = [
     { nama: 'Klasifikasi', status: 'Aktif', keterangan: 'Pemetaan prioritas bantuan, termasuk skenario beasiswa.' },
-    { nama: 'Klastering', status: 'Segera', keterangan: 'Pengelompokan wilayah berdasarkan pola indikator.' },
+    { nama: 'Clustering', status: 'Aktif', keterangan: 'Pengelompokan wilayah berdasarkan pola indikator pada 5 tema CSV.' },
     { nama: 'Regresi', status: 'Aktif', keterangan: 'Proyeksi tren indikator lintas bidang ke depan.' }
   ];
 
@@ -109,6 +174,7 @@ export default function App() {
       header: true,
       dynamicTyping: true,
       complete: function (results) {
+        setRawClusteringData([]);
         const dataBersih = results.data.filter((row) => {
           if (!row || Object.keys(row).length === 0) {
             return false;
@@ -128,7 +194,37 @@ export default function App() {
         const modeJenjangTerlemah = csvAktif.includes('hasil_klasifikasi_jenjang_terlemah');
         const modeKlasifikasiTren = csvAktif.includes('hasil_klasifikasi_tren');
         const modePrioritasBantuan = csvAktif.includes('hasil_klasifikasi_prioritas');
+        const modeClustering = csvAktif.includes('/data/clustering/');
         const modeHasilKeseluruhan = csvAktif.includes('hasil_klasifikasi.csv') && !modePerJenjang && !modeJenjangTerlemah && !modeKlasifikasiTren;
+
+        if (modeClustering) {
+          setRawClusteringData(dataBersih);
+          const ringkasanCluster = new Map();
+
+          dataBersih.forEach((row) => {
+            const cluster = String(row.cluster ?? '').trim();
+            if (!cluster) {
+              return;
+            }
+
+            ringkasanCluster.set(cluster, (ringkasanCluster.get(cluster) ?? 0) + 1);
+          });
+
+          const dataTransform = Array.from(ringkasanCluster.entries())
+            .sort((a, b) => Number(a[0]) - Number(b[0]))
+            .map(([cluster, jumlah]) => ({ cluster: formatCluster(cluster), jumlah_wilayah: jumlah }));
+
+          setOpsiJenjang([]);
+          setJenjangAktif('');
+          setKunciLabel('cluster');
+          setKunciNilai('jumlah_wilayah');
+          setKunciTahun('');
+          setIsProyeksiWide(false);
+          setDaftarVariabelProyeksi([]);
+          setVariabelProyeksiAktif('');
+          setDataGrafik(dataTransform);
+          return;
+        }
 
         if (modeHasilKeseluruhan) {
           const mapTerbaru = new Map();
@@ -509,13 +605,49 @@ export default function App() {
 
   const menuAktif = kategoriUtama === 'beasiswa'
     ? (menuBeasiswaPerMode[modeBeasiswaAktif] ?? menuBeasiswaKlasifikasi)
-    : (halamanAktif === 'evaluasi' ? menuKlasifikasi : menuRegresi);
+    : (kategoriUtama === 'clustering'
+      ? menuClustering
+      : (halamanAktif === 'evaluasi' ? menuKlasifikasi : menuRegresi));
   const sedangBeasiswa = kategoriUtama === 'beasiswa';
+  const sedangClustering = kategoriUtama === 'clustering';
   const sedangPrioritasBantuan = csvAktif.includes('hasil_klasifikasi_prioritas');
   const sedangPerJenjang = csvAktif.includes('hasil_klasifikasi_per_jenjang');
   const sedangJenjangTerlemah = csvAktif.includes('hasil_klasifikasi_jenjang_terlemah');
   const sedangKlasifikasiTren = csvAktif.includes('hasil_klasifikasi_tren');
   const sedangHasilKeseluruhan = csvAktif.includes('hasil_klasifikasi.csv') && !sedangPerJenjang && !sedangJenjangTerlemah && !sedangKlasifikasiTren && !sedangPrioritasBantuan;
+
+  const ringkasanClustering = useMemo(() => {
+    if (!sedangClustering) {
+      return null;
+    }
+
+    const totalWilayah = dataGrafik.reduce((total, row) => total + Number(row.jumlah_wilayah ?? 0), 0);
+    const cluster0 = Number(dataGrafik.find((row) => row.cluster === 'Cluster 0')?.jumlah_wilayah ?? 0);
+    const cluster1 = Number(dataGrafik.find((row) => row.cluster === 'Cluster 1')?.jumlah_wilayah ?? 0);
+    const clusterDominan = [...dataGrafik].sort((a, b) => Number(b.jumlah_wilayah ?? 0) - Number(a.jumlah_wilayah ?? 0))[0];
+
+    return {
+      totalWilayah,
+      cluster0,
+      cluster1,
+      clusterDominan: clusterDominan?.cluster ?? '-',
+      clusterDominanCount: Number(clusterDominan?.jumlah_wilayah ?? 0)
+    };
+  }, [dataGrafik, sedangClustering]);
+
+  const keteranganClusteringAktif = useMemo(() => {
+    if (!sedangClustering) {
+      return [];
+    }
+
+    const keteranganTema = keteranganClustering[csvAktif] ?? [];
+    const hitungan = new Map(dataGrafik.map((item) => [item.cluster, item.jumlah_wilayah]));
+
+    return keteranganTema.map((item) => ({
+      ...item,
+      jumlah_wilayah: hitungan.get(item.cluster) ?? 0
+    }));
+  }, [csvAktif, dataGrafik, sedangClustering]);
 
   const gantiHalaman = (halaman) => {
     setHalamanAktif(halaman);
@@ -539,6 +671,13 @@ export default function App() {
       return;
     }
 
+    if (kategori === 'clustering') {
+      setHalamanAktif('evaluasi');
+      setTampilanRegresi('grafik');
+      setCsvAktif(menuClustering[0].path);
+      return;
+    }
+
     setHalamanAktif('evaluasi');
     setCsvAktif('/data/klasifikasi/hasil_klasifikasi.csv');
   };
@@ -553,6 +692,37 @@ export default function App() {
   const jumlahDataset = new Intl.NumberFormat('id-ID').format(dataTampil.length);
 
   const renderGrafik = () => {
+    if (sedangClustering) {
+      return (
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={dataTampil} layout="vertical" margin={{ top: 10, right: 26, left: 22, bottom: 6 }}>
+            <CartesianGrid strokeDasharray="4 4" horizontal={false} stroke="#ebeef3" />
+            <XAxis
+              type="number"
+              tickFormatter={formatAngkaRapi}
+              tick={{ fill: '#657188' }}
+              axisLine={false}
+              tickLine={false}
+            />
+            <YAxis
+              dataKey="cluster"
+              type="category"
+              width={140}
+              tick={{ fontSize: 12, fill: '#667085' }}
+              axisLine={false}
+              tickLine={false}
+            />
+            <Tooltip
+              formatter={formatAngkaRapi}
+              cursor={{ fill: '#f7f8fb' }}
+              contentStyle={{ borderRadius: '10px', borderColor: '#e8ebf0' }}
+            />
+            <Bar dataKey="jumlah_wilayah" name="Jumlah Wilayah" fill="#eb2b39" barSize={24} radius={[0, 7, 7, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      );
+    }
+
     if (halamanAktif === 'evaluasi') {
       return (
         <ResponsiveContainer width="100%" height="100%">
@@ -677,10 +847,34 @@ export default function App() {
         </div>
 
         <nav className="site-nav" aria-label="Navigasi utama">
-          <button className="nav-link active">Ringkasan</button>
-          <button className="nav-link">Klasifikasi</button>
-          <button className="nav-link">Klastering</button>
-          <button className="nav-link">Regresi</button>
+          <button
+            className={sedangHasilKeseluruhan ? 'nav-link active' : 'nav-link'}
+            onClick={() => gantiKategoriUtama('sekolah')}
+          >
+            Ringkasan
+          </button>
+          <button
+            className={kategoriUtama === 'sekolah' && !sedangHasilKeseluruhan && !sedangClustering ? 'nav-link active' : 'nav-link'}
+            onClick={() => gantiKategoriUtama('sekolah')}
+          >
+            Klasifikasi
+          </button>
+          <button
+            className={sedangClustering ? 'nav-link active' : 'nav-link'}
+            onClick={() => gantiKategoriUtama('clustering')}
+          >
+            Clustering
+          </button>
+          <button
+            className={kategoriUtama === 'sekolah' && halamanAktif === 'proyeksi' ? 'nav-link active' : 'nav-link'}
+            onClick={() => {
+              gantiKategoriUtama('sekolah');
+              setHalamanAktif('proyeksi');
+              setCsvAktif('/data/regresi/hasil_proyeksi_skenario_c.csv');
+            }}
+          >
+            Regresi
+          </button>
         </nav>
       </header>
 
@@ -750,12 +944,16 @@ export default function App() {
             </div>
 
             <button className="filter-item">
-              Ringkasan Entri
-              <span className="filter-count">{new Intl.NumberFormat('id-ID').format(dataGrafik.length)}</span>
+              {sedangClustering ? 'Total Wilayah' : 'Ringkasan Entri'}
+              <span className="filter-count">
+                {sedangClustering
+                  ? new Intl.NumberFormat('id-ID').format(ringkasanClustering?.totalWilayah ?? 0)
+                  : new Intl.NumberFormat('id-ID').format(dataGrafik.length)}
+              </span>
             </button>
             <button className="filter-item">
-              Tipe Model
-              <span className="filter-count">2</span>
+              {sedangClustering ? 'Jumlah Cluster' : 'Tipe Model'}
+              <span className="filter-count">{sedangClustering ? dataTampil.length : 2}</span>
             </button>
 
             {sedangBeasiswa && (
@@ -772,7 +970,7 @@ export default function App() {
                     className={modeBeasiswaAktif === 'klastering' ? 'mode-btn active' : 'mode-btn'}
                     onClick={() => gantiModeBeasiswa('klastering')}
                   >
-                    Klastering
+                    Clustering
                   </button>
                   <button
                     className={modeBeasiswaAktif === 'regresi' ? 'mode-btn active' : 'mode-btn'}
@@ -784,7 +982,7 @@ export default function App() {
               </>
             )}
 
-            {!sedangBeasiswa && (
+            {!sedangBeasiswa && !sedangClustering && (
               <>
                 <h3 className="subsection-title">Mode Analisis</h3>
                 <div className="mode-toggle" role="tablist" aria-label="Mode analisis">
@@ -804,7 +1002,7 @@ export default function App() {
               </>
             )}
 
-            {!sedangBeasiswa && halamanAktif === 'proyeksi' && (
+            {!sedangBeasiswa && !sedangClustering && halamanAktif === 'proyeksi' && (
               <div className="mode-toggle" role="tablist" aria-label="Tampilan regresi" style={{ marginTop: 8 }}>
                 <button
                   className={tampilanRegresi === 'grafik' ? 'mode-btn active' : 'mode-btn'}
@@ -827,6 +1025,44 @@ export default function App() {
               <ProyeksiInteraktif />
             ) : (
               <>
+            {sedangClustering && ringkasanClustering && (
+              <div className="kpi-grid">
+                <article className="kpi-card">
+                  <span>Total Wilayah</span>
+                  <strong>{ringkasanClustering.totalWilayah}</strong>
+                </article>
+                <article className="kpi-card">
+                  <span>Cluster 0</span>
+                  <strong>{ringkasanClustering.cluster0}</strong>
+                </article>
+                <article className="kpi-card">
+                  <span>Cluster 1</span>
+                  <strong>{ringkasanClustering.cluster1}</strong>
+                </article>
+                <article className="kpi-card accent">
+                  <span>Cluster Dominan</span>
+                  <strong>{ringkasanClustering.clusterDominan}</strong>
+                  <small>{ringkasanClustering.clusterDominanCount} wilayah</small>
+                </article>
+              </div>
+            )}
+
+            {sedangClustering && keteranganClusteringAktif.length > 0 && (
+              <div className="module-list" style={{ marginBottom: 12 }}>
+                {keteranganClusteringAktif.map((item) => (
+                  <article className="module-item" key={item.cluster}>
+                    <header>
+                      <h4>{item.cluster}</h4>
+                      <span className="status-chip active">
+                        {new Intl.NumberFormat('id-ID').format(item.jumlah_wilayah)} wilayah
+                      </span>
+                    </header>
+                    <p>{item.ringkasan}</p>
+                  </article>
+                ))}
+              </div>
+            )}
+
             {sedangPrioritasBantuan && (
               <div className="kpi-grid">
                 <article className="kpi-card">
@@ -874,7 +1110,13 @@ export default function App() {
             <div className="results-head">
               <p className="results-count">
                 <span className="ping-dot" aria-hidden="true" />
-                {sedangPrioritasBantuan ? 'Ringkasan prioritas wilayah terbaru' : sedangHasilKeseluruhan ? 'Ringkasan wilayah terbaru' : `${jumlahDataset} Entri Analisis`}
+                {sedangPrioritasBantuan
+                  ? 'Ringkasan prioritas wilayah terbaru'
+                  : sedangHasilKeseluruhan
+                    ? 'Ringkasan wilayah terbaru'
+                    : sedangClustering
+                      ? `${new Intl.NumberFormat('id-ID').format(ringkasanClustering?.totalWilayah ?? 0)} Wilayah Terpetakan`
+                      : `${jumlahDataset} Entri Analisis`}
               </p>
 
               <div className="results-controls">
@@ -882,11 +1124,25 @@ export default function App() {
                   <input
                     id="cari-dataset"
                     type="search"
-                    placeholder={`Cari entri ${bidangAktif.toLowerCase()}...`}
+                    placeholder={sedangClustering ? `Cari wilayah atau cluster ${bidangAktif.toLowerCase()}...` : `Cari entri ${bidangAktif.toLowerCase()}...`}
                     value={kataKunci}
                     onChange={(e) => setKataKunci(e.target.value)}
                   />
                 </label>
+
+                {sedangClustering && (
+                  <select
+                    id="pilih-tema-clustering"
+                    value={csvAktif}
+                    onChange={(e) => setCsvAktif(e.target.value)}
+                  >
+                    {menuAktif.map((menu) => (
+                      <option key={menu.path} value={menu.path}>
+                        {menu.label}
+                      </option>
+                    ))}
+                  </select>
+                )}
 
                 <select
                   value={modeUrut}
@@ -921,33 +1177,48 @@ export default function App() {
               </div>
             </div>
 
-            <div className="dataset-menu">
-              {menuAktif.map((menu) => (
-                <button
-                  key={menu.path}
-                  onClick={() => setCsvAktif(menu.path)}
-                  className={csvAktif === menu.path ? 'dataset-pill active' : 'dataset-pill'}
-                >
-                  {menu.label}
-                </button>
-              ))}
-            </div>
+            {!sedangClustering && (
+              <div className="dataset-menu">
+                {menuAktif.map((menu) => (
+                  <button
+                    key={menu.path}
+                    onClick={() => setCsvAktif(menu.path)}
+                    className={csvAktif === menu.path ? 'dataset-pill active' : 'dataset-pill'}
+                  >
+                    {menu.label}
+                  </button>
+                ))}
+              </div>
+            )}
 
-            <article className={sedangPrioritasBantuan || sedangHasilKeseluruhan || sedangKlasifikasiTren || sedangJenjangTerlemah ? 'chart-card is-summary' : 'chart-card'}>
+            <article className={sedangPrioritasBantuan || sedangHasilKeseluruhan || sedangKlasifikasiTren || sedangJenjangTerlemah || sedangClustering ? 'chart-card is-summary' : 'chart-card'}>
               <header className="chart-header">
                 <h3>
-                  {sedangBeasiswa && `${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Program Beasiswa'} ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && sedangPrioritasBantuan && `Distribusi Prioritas Bantuan ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && sedangHasilKeseluruhan && `Ringkasan Hasil Keseluruhan ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'proyeksi' && `Proyeksi Tren ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && sedangPerJenjang && `Evaluasi Per Jenjang ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && sedangJenjangTerlemah && `Peta Jenjang Terlemah ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && sedangKlasifikasiTren && `Distribusi Klasifikasi Tren ${bidangAktif}`}
-                  {!sedangBeasiswa && halamanAktif === 'evaluasi' && !sedangPrioritasBantuan && !sedangPerJenjang && !sedangJenjangTerlemah && !sedangKlasifikasiTren && `Evaluasi dan Ranking ${bidangAktif}`}
+                  {sedangClustering
+                    ? `Distribusi Cluster ${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? ''}`
+                    : sedangBeasiswa
+                      ? `${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Program Beasiswa'} ${bidangAktif}`
+                      : halamanAktif === 'evaluasi' && sedangPrioritasBantuan
+                        ? `Distribusi Prioritas Bantuan ${bidangAktif}`
+                        : halamanAktif === 'evaluasi' && sedangHasilKeseluruhan
+                          ? `Ringkasan Hasil Keseluruhan ${bidangAktif}`
+                          : halamanAktif === 'proyeksi'
+                            ? `Proyeksi Tren ${bidangAktif}`
+                            : halamanAktif === 'evaluasi' && sedangPerJenjang
+                              ? `Evaluasi Per Jenjang ${bidangAktif}`
+                              : halamanAktif === 'evaluasi' && sedangJenjangTerlemah
+                                ? `Peta Jenjang Terlemah ${bidangAktif}`
+                                : halamanAktif === 'evaluasi' && sedangKlasifikasiTren
+                                  ? `Distribusi Klasifikasi Tren ${bidangAktif}`
+                                  : halamanAktif === 'evaluasi'
+                                    ? `Evaluasi dan Ranking ${bidangAktif}`
+                                    : ''}
                 </h3>
                 <span className="chart-tag">
                   {sedangBeasiswa
                     ? 'Program Beasiswa'
+                    : sedangClustering
+                      ? (menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Clustering')
                     : halamanAktif === 'proyeksi'
                     ? 'Skenario C'
                     : sedangPrioritasBantuan
@@ -966,6 +1237,50 @@ export default function App() {
 
               <div className={halamanAktif === 'evaluasi' ? 'chart-wrap tall' : 'chart-wrap'}>{renderGrafik()}</div>
             </article>
+
+            {sedangClustering && rawClusteringData.length > 0 && (
+              <div className="clustering-regions-section" style={{ marginTop: 24 }}>
+                <h3 style={{ marginBottom: 14, fontSize: '1.2rem', fontFamily: 'var(--font-heading)' }}>
+                  Daftar Wilayah per Cluster
+                </h3>
+                <div className="clustering-regions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+                  {[...new Set(rawClusteringData.map(r => r.cluster))].filter(c => c !== null && c !== undefined && String(c).trim() !== '').sort((a, b) => Number(a) - Number(b)).map(clusterId => {
+                    const kata = kataKunci.trim().toLowerCase();
+                    const wilayahDiCluster = rawClusteringData
+                      .filter(r => String(r.cluster) === String(clusterId))
+                      .map(r => r.kabupaten_kota)
+                      .filter(Boolean)
+                      .filter(wilayah => !kata || wilayah.toLowerCase().includes(kata))
+                      .sort((a, b) => a.localeCompare(b, 'id'));
+
+                    return (
+                      <article className="chart-card" key={clusterId} style={{ padding: 16 }}>
+                        <header className="chart-header" style={{ borderBottom: '1px solid #e7ebf1', paddingBottom: 8, marginBottom: 12 }}>
+                          <h4 style={{ margin: 0, color: '#1f2a3f', fontSize: '1rem', fontWeight: 700 }}>
+                            Cluster {clusterId}
+                          </h4>
+                          <span className="status-chip active">
+                            {wilayahDiCluster.length} Wilayah
+                          </span>
+                        </header>
+                        <div style={{ maxHeight: '220px', overflowY: 'auto', paddingRight: 4 }}>
+                          <ul style={{ margin: 0, paddingLeft: 18, fontSize: '0.88rem', color: '#47526a', lineHeight: '1.7' }}>
+                            {wilayahDiCluster.map(wilayah => (
+                              <li key={wilayah} style={{ marginBottom: 4 }}>{wilayah}</li>
+                            ))}
+                            {wilayahDiCluster.length === 0 && (
+                              <li style={{ listStyleType: 'none', marginLeft: -18, color: '#939bae', fontStyle: 'italic' }}>
+                                Tidak ada wilayah yang cocok
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
               </>
             )}
           </div>
