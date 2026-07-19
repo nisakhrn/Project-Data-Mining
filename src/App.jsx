@@ -32,7 +32,12 @@ const formatCluster = (cluster) => `Cluster ${cluster}`;
 
 export default function App() {
   const [kategoriUtama, setKategoriUtama] = useState('sekolah');
-  const [modeBeasiswaAktif, setModeBeasiswaAktif] = useState('klasifikasi');
+  const [sedangRingkasanUtama, setSedangRingkasanUtama] = useState(false);
+  const [ringkasanGabungan, setRingkasanGabungan] = useState({
+    klasifikasi: null,
+    clustering: null,
+    regresi: null
+  });
   const [halamanAktif, setHalamanAktif] = useState('evaluasi');
   const [tampilanRegresi, setTampilanRegresi] = useState('grafik'); // 'grafik' | 'interaktif'
   const [dataGrafik, setDataGrafik] = useState([]);
@@ -134,32 +139,75 @@ export default function App() {
     ]
   };
 
-  const menuBeasiswaKlasifikasi = [
-    { label: "Penerima Beasiswa", path: "/data/beasiswa/klasifikasi/hasil_penerima_beasiswa.csv" },
-    { label: "Distribusi Anggaran", path: "/data/beasiswa/klasifikasi/hasil_distribusi_anggaran.csv" },
-    { label: "Prediksi Kelayakan Bantuan", path: "/data/beasiswa/klasifikasi/hasil_prediksi_kelayakan.csv" }
-  ];
-
-  const menuBeasiswaKlastering = [
-    { label: "Pengelompokan Wilayah Penerima", path: "/data/beasiswa/klastering/hasil_klastering_wilayah.csv" }
-  ];
-
-  const menuBeasiswaRegresi = [
-    { label: "Proyeksi Jumlah Penerima", path: "/data/beasiswa/regresi/hasil_proyeksi_penerima.csv" }
-  ];
-
-  const daftarBidang = [
-    { nama: 'Pendidikan', tersedia: true },
-    { nama: 'Kesehatan', tersedia: false },
-    { nama: 'Ekonomi', tersedia: false },
-    { nama: 'Layanan Publik', tersedia: false }
-  ];
-
   const modulAnalitik = [
-    { nama: 'Klasifikasi', status: 'Aktif', keterangan: 'Pemetaan prioritas bantuan, termasuk skenario beasiswa.' },
+    { nama: 'Klasifikasi', status: 'Aktif', keterangan: 'Pemetaan prioritas bantuan berdasarkan indikator pendidikan.' },
     { nama: 'Clustering', status: 'Aktif', keterangan: 'Pengelompokan wilayah berdasarkan pola indikator pada 5 tema CSV.' },
     { nama: 'Regresi', status: 'Aktif', keterangan: 'Proyeksi tren indikator lintas bidang ke depan.' }
   ];
+
+  useEffect(() => {
+    // Klasifikasi: ambil ringkasan wilayah "Baik" vs "Perlu Peningkatan" dari hasil terbaru
+    Papa.parse('/data/klasifikasi/hasil_klasifikasi.csv', {
+      download: true,
+      header: true,
+      dynamicTyping: true,
+      complete: (hasil) => {
+        const baris = hasil.data.filter((row) => row && row.kabupaten_kota);
+        const mapTerbaru = new Map();
+        baris.forEach((row) => {
+          const label = String(row.kabupaten_kota ?? '').trim();
+          const tahun = Number(row.tahun ?? 0);
+          const lama = mapTerbaru.get(label);
+          if (label && (!lama || tahun >= Number(lama.tahun ?? 0))) {
+            mapTerbaru.set(label, row);
+          }
+        });
+        const terbaru = Array.from(mapTerbaru.values());
+        const total = terbaru.length;
+        const baik = terbaru.filter((row) => String(row.Label_RLS ?? '') === 'Baik').length;
+        setRingkasanGabungan((prev) => ({
+          ...prev,
+          klasifikasi: { total, baik, perluPeningkatan: total - baik }
+        }));
+      },
+      error: () => setRingkasanGabungan((prev) => ({ ...prev, klasifikasi: null }))
+    });
+
+    // Clustering: ambil ringkasan jumlah wilayah per cluster dari tema utama
+    Papa.parse('/data/clustering/hasil_cluster_tema1.csv', {
+      download: true,
+      header: true,
+      dynamicTyping: true,
+      complete: (hasil) => {
+        const baris = hasil.data.filter((row) => row && row.cluster !== undefined && row.cluster !== null);
+        const totalWilayah = baris.length;
+        const jumlahCluster = new Set(baris.map((row) => String(row.cluster))).size;
+        setRingkasanGabungan((prev) => ({
+          ...prev,
+          clustering: { totalWilayah, jumlahCluster }
+        }));
+      },
+      error: () => setRingkasanGabungan((prev) => ({ ...prev, clustering: null }))
+    });
+
+    // Regresi: ambil ringkasan arah tren dari model yang sudah dilatih
+    fetch('/data/regresi/model_regresi_skenario_c.json')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!data) {
+          setRingkasanGabungan((prev) => ({ ...prev, regresi: null }));
+          return;
+        }
+        const daftar = Object.entries(data);
+        const naik = daftar.filter(([, v]) => v.slope > 0).length;
+        const rataR2 = daftar.reduce((total, [, v]) => total + v.r2, 0) / (daftar.length || 1);
+        setRingkasanGabungan((prev) => ({
+          ...prev,
+          regresi: { totalIndikator: daftar.length, naik, rataR2 }
+        }));
+      })
+      .catch(() => setRingkasanGabungan((prev) => ({ ...prev, regresi: null })));
+  }, []);
 
   useEffect(() => {
     fetch('/data/regresi/data_historis_skenario_c.json')
@@ -597,18 +645,9 @@ export default function App() {
     variabelProyeksiAktif
   ]);
 
-  const menuBeasiswaPerMode = {
-    klasifikasi: menuBeasiswaKlasifikasi,
-    klastering: menuBeasiswaKlastering,
-    regresi: menuBeasiswaRegresi
-  };
-
-  const menuAktif = kategoriUtama === 'beasiswa'
-    ? (menuBeasiswaPerMode[modeBeasiswaAktif] ?? menuBeasiswaKlasifikasi)
-    : (kategoriUtama === 'clustering'
-      ? menuClustering
-      : (halamanAktif === 'evaluasi' ? menuKlasifikasi : menuRegresi));
-  const sedangBeasiswa = kategoriUtama === 'beasiswa';
+  const menuAktif = kategoriUtama === 'clustering'
+    ? menuClustering
+    : (halamanAktif === 'evaluasi' ? menuKlasifikasi : menuRegresi);
   const sedangClustering = kategoriUtama === 'clustering';
   const sedangPrioritasBantuan = csvAktif.includes('hasil_klasifikasi_prioritas');
   const sedangPerJenjang = csvAktif.includes('hasil_klasifikasi_per_jenjang');
@@ -652,6 +691,7 @@ export default function App() {
   const gantiHalaman = (halaman) => {
     setHalamanAktif(halaman);
     setKataKunci('');
+    setSedangRingkasanUtama(false);
 
     if (halaman === 'evaluasi') {
       setCsvAktif('/data/klasifikasi/hasil_klasifikasi.csv');
@@ -664,12 +704,7 @@ export default function App() {
   const gantiKategoriUtama = (kategori) => {
     setKategoriUtama(kategori);
     setKataKunci('');
-
-    if (kategori === 'beasiswa') {
-      setModeBeasiswaAktif('klasifikasi');
-      setCsvAktif(menuBeasiswaKlasifikasi[0].path);
-      return;
-    }
+    setSedangRingkasanUtama(false);
 
     if (kategori === 'clustering') {
       setHalamanAktif('evaluasi');
@@ -680,13 +715,6 @@ export default function App() {
 
     setHalamanAktif('evaluasi');
     setCsvAktif('/data/klasifikasi/hasil_klasifikasi.csv');
-  };
-
-  const gantiModeBeasiswa = (mode) => {
-    setModeBeasiswaAktif(mode);
-    setKataKunci('');
-    const menuTerpilih = menuBeasiswaPerMode[mode] ?? menuBeasiswaKlasifikasi;
-    setCsvAktif(menuTerpilih[0]?.path ?? '');
   };
 
   const jumlahDataset = new Intl.NumberFormat('id-ID').format(dataTampil.length);
@@ -848,25 +876,25 @@ export default function App() {
 
         <nav className="site-nav" aria-label="Navigasi utama">
           <button
-            className={sedangHasilKeseluruhan ? 'nav-link active' : 'nav-link'}
-            onClick={() => gantiKategoriUtama('sekolah')}
+            className={sedangRingkasanUtama ? 'nav-link active' : 'nav-link'}
+            onClick={() => setSedangRingkasanUtama(true)}
           >
             Ringkasan
           </button>
           <button
-            className={kategoriUtama === 'sekolah' && !sedangHasilKeseluruhan && !sedangClustering ? 'nav-link active' : 'nav-link'}
+            className={!sedangRingkasanUtama && kategoriUtama === 'sekolah' && !sedangClustering && halamanAktif !== 'proyeksi' ? 'nav-link active' : 'nav-link'}
             onClick={() => gantiKategoriUtama('sekolah')}
           >
             Klasifikasi
           </button>
           <button
-            className={sedangClustering ? 'nav-link active' : 'nav-link'}
+            className={!sedangRingkasanUtama && sedangClustering ? 'nav-link active' : 'nav-link'}
             onClick={() => gantiKategoriUtama('clustering')}
           >
             Clustering
           </button>
           <button
-            className={kategoriUtama === 'sekolah' && halamanAktif === 'proyeksi' ? 'nav-link active' : 'nav-link'}
+            className={!sedangRingkasanUtama && kategoriUtama === 'sekolah' && halamanAktif === 'proyeksi' ? 'nav-link active' : 'nav-link'}
             onClick={() => {
               gantiKategoriUtama('sekolah');
               setHalamanAktif('proyeksi');
@@ -884,28 +912,75 @@ export default function App() {
           <h1>Dashboard Ringkasan Data Mining Daerah</h1>
         </section>
 
-        <section className="domain-strip" aria-label="Pemilihan bidang analisis">
-          <p>Bidang:</p>
-          <div className="domain-list">
-            {daftarBidang.map((bidang) => (
-              <button
-                key={bidang.nama}
-                className={
-                  bidangAktif === bidang.nama
-                    ? 'domain-pill active'
-                    : bidang.tersedia
-                      ? 'domain-pill'
-                      : 'domain-pill disabled'
-                }
-                onClick={() => bidang.tersedia && setBidangAktif(bidang.nama)}
-                disabled={!bidang.tersedia}
-              >
-                {bidang.nama}
-              </button>
-            ))}
-          </div>
-        </section>
+        {sedangRingkasanUtama ? (
+          <section className="dashboard-grid" style={{ gridTemplateColumns: '1fr' }}>
+            <div className="results-panel">
+              <p className="panel-subtitle" style={{ marginBottom: 20 }}>
+                Rangkuman simpulan dari ketiga skenario data mining pendidikan Provinsi Aceh — Klasterisasi, Klasifikasi, dan Regresi.
+              </p>
 
+              <div className="kpi-grid" style={{ marginBottom: 24 }}>
+                <article className="kpi-card accent">
+                  <span>Klasifikasi — Wilayah Perlu Perhatian</span>
+                  <strong>
+                    {ringkasanGabungan.klasifikasi
+                      ? `${ringkasanGabungan.klasifikasi.perluPeningkatan} / ${ringkasanGabungan.klasifikasi.total}`
+                      : 'Memuat...'}
+                  </strong>
+                  <small>Kabupaten/kota berlabel "Perlu Peningkatan"</small>
+                </article>
+                <article className="kpi-card accent">
+                  <span>Clustering — Wilayah Terpetakan</span>
+                  <strong>
+                    {ringkasanGabungan.clustering
+                      ? `${ringkasanGabungan.clustering.totalWilayah} wilayah`
+                      : 'Memuat...'}
+                  </strong>
+                  <small>{ringkasanGabungan.clustering ? `${ringkasanGabungan.clustering.jumlahCluster} cluster terbentuk` : ''}</small>
+                </article>
+                <article className="kpi-card accent">
+                  <span>Regresi — Indikator Tren Naik</span>
+                  <strong>
+                    {ringkasanGabungan.regresi
+                      ? `${ringkasanGabungan.regresi.naik} / ${ringkasanGabungan.regresi.totalIndikator}`
+                      : 'Memuat...'}
+                  </strong>
+                  <small>{ringkasanGabungan.regresi ? `Rata-rata R\u00b2 model: ${ringkasanGabungan.regresi.rataR2.toFixed(3)}` : ''}</small>
+                </article>
+              </div>
+
+              <div className="module-list">
+                <article className="module-item">
+                  <header>
+                    <h4>Klasifikasi</h4>
+                    <span className="status-chip active">Prioritas Bantuan</span>
+                  </header>
+                  <p>
+                    Memetakan kabupaten/kota berdasarkan status kualitas pendidikan (Baik / Perlu Peningkatan) untuk menentukan prioritas intervensi kebijakan.
+                  </p>
+                </article>
+                <article className="module-item">
+                  <header>
+                    <h4>Clustering</h4>
+                    <span className="status-chip active">Pengelompokan Wilayah</span>
+                  </header>
+                  <p>
+                    Mengelompokkan wilayah berdasarkan kemiripan pola indikator pendidikan (rasio guru-murid, skala sekolah, proporsi swasta/negeri, dan komposisi jenjang).
+                  </p>
+                </article>
+                <article className="module-item">
+                  <header>
+                    <h4>Regresi</h4>
+                    <span className="status-chip active">Proyeksi Tren</span>
+                  </header>
+                  <p>
+                    Memproyeksikan tren tujuh indikator pendidikan (jumlah murid per jenjang, RLS, HLS, AMH) untuk mendukung perencanaan ke depan.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </section>
+        ) : (
         <section className="dashboard-grid">
           <aside className="filter-panel">
             <h3>Modul Analitik</h3>
@@ -927,22 +1002,6 @@ export default function App() {
               ))}
             </div>
 
-            <h3 className="subsection-title">Menu Utama</h3>
-            <div className="mode-toggle" role="tablist" aria-label="Menu utama">
-              <button
-                className={kategoriUtama === 'sekolah' ? 'mode-btn active' : 'mode-btn'}
-                onClick={() => gantiKategoriUtama('sekolah')}
-              >
-                📁 Indikator Makro Sekolah
-              </button>
-              <button
-                className={kategoriUtama === 'beasiswa' ? 'mode-btn active' : 'mode-btn'}
-                onClick={() => gantiKategoriUtama('beasiswa')}
-              >
-                📁 Program Beasiswa Daerah
-              </button>
-            </div>
-
             <button className="filter-item">
               {sedangClustering ? 'Total Wilayah' : 'Ringkasan Entri'}
               <span className="filter-count">
@@ -956,33 +1015,7 @@ export default function App() {
               <span className="filter-count">{sedangClustering ? dataTampil.length : 2}</span>
             </button>
 
-            {sedangBeasiswa && (
-              <>
-                <h3 className="subsection-title">Metode Analisis Beasiswa</h3>
-                <div className="mode-toggle mode-toggle-triple" role="tablist" aria-label="Metode analisis beasiswa">
-                  <button
-                    className={modeBeasiswaAktif === 'klasifikasi' ? 'mode-btn active' : 'mode-btn'}
-                    onClick={() => gantiModeBeasiswa('klasifikasi')}
-                  >
-                    Klasifikasi
-                  </button>
-                  <button
-                    className={modeBeasiswaAktif === 'klastering' ? 'mode-btn active' : 'mode-btn'}
-                    onClick={() => gantiModeBeasiswa('klastering')}
-                  >
-                    Clustering
-                  </button>
-                  <button
-                    className={modeBeasiswaAktif === 'regresi' ? 'mode-btn active' : 'mode-btn'}
-                    onClick={() => gantiModeBeasiswa('regresi')}
-                  >
-                    Regresi
-                  </button>
-                </div>
-              </>
-            )}
-
-            {!sedangBeasiswa && !sedangClustering && (
+            {!sedangClustering && (
               <>
                 <h3 className="subsection-title">Mode Analisis</h3>
                 <div className="mode-toggle" role="tablist" aria-label="Mode analisis">
@@ -1002,7 +1035,7 @@ export default function App() {
               </>
             )}
 
-            {!sedangBeasiswa && !sedangClustering && halamanAktif === 'proyeksi' && (
+            {!sedangClustering && halamanAktif === 'proyeksi' && (
               <div className="mode-toggle" role="tablist" aria-label="Tampilan regresi" style={{ marginTop: 8 }}>
                 <button
                   className={tampilanRegresi === 'grafik' ? 'mode-btn active' : 'mode-btn'}
@@ -1196,9 +1229,7 @@ export default function App() {
                 <h3>
                   {sedangClustering
                     ? `Distribusi Cluster ${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? ''}`
-                    : sedangBeasiswa
-                      ? `${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Program Beasiswa'} ${bidangAktif}`
-                      : halamanAktif === 'evaluasi' && sedangPrioritasBantuan
+                    : halamanAktif === 'evaluasi' && sedangPrioritasBantuan
                         ? `Distribusi Prioritas Bantuan ${bidangAktif}`
                         : halamanAktif === 'evaluasi' && sedangHasilKeseluruhan
                           ? `Ringkasan Hasil Keseluruhan ${bidangAktif}`
@@ -1215,10 +1246,8 @@ export default function App() {
                                     : ''}
                 </h3>
                 <span className="chart-tag">
-                  {sedangBeasiswa
-                    ? 'Program Beasiswa'
-                    : sedangClustering
-                      ? (menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Clustering')
+                  {sedangClustering
+                    ? (menuAktif.find((menu) => menu.path === csvAktif)?.label ?? 'Clustering')
                     : halamanAktif === 'proyeksi'
                     ? 'Skenario C'
                     : sedangPrioritasBantuan
@@ -1285,6 +1314,7 @@ export default function App() {
             )}
           </div>
         </section>
+        )}
       </main>
     </div>
   );
