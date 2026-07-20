@@ -141,7 +141,7 @@ export default function App() {
 
   const modulAnalitik = [
     { nama: 'Klasifikasi', status: 'Aktif', keterangan: 'Pemetaan prioritas bantuan berdasarkan indikator pendidikan.' },
-    { nama: 'Clustering', status: 'Aktif', keterangan: 'Pengelompokan wilayah berdasarkan pola indikator pada 5 tema CSV.' },
+    { nama: 'Clustering', status: 'Aktif', keterangan: 'Pengelompokan wilayah berdasarkan kemiripan karakteristik kondisi pendidikan.' },
     { nama: 'Regresi', status: 'Aktif', keterangan: 'Proyeksi tren indikator lintas bidang ke depan.' }
   ];
 
@@ -1015,25 +1015,33 @@ export default function App() {
               <span className="filter-count">{sedangClustering ? dataTampil.length : 2}</span>
             </button>
 
-            {!sedangClustering && (
-              <>
-                <h3 className="subsection-title">Mode Analisis</h3>
-                <div className="mode-toggle" role="tablist" aria-label="Mode analisis">
-                  <button
-                    className={halamanAktif === 'evaluasi' ? 'mode-btn active' : 'mode-btn'}
-                    onClick={() => gantiHalaman('evaluasi')}
-                  >
-                    Klasifikasi/Ranking
-                  </button>
-                  <button
-                    className={halamanAktif === 'proyeksi' ? 'mode-btn active' : 'mode-btn'}
-                    onClick={() => gantiHalaman('proyeksi')}
-                  >
-                    Regresi
-                  </button>
-                </div>
-              </>
-            )}
+            <>
+              <h3 className="subsection-title">Mode Analisis</h3>
+              <div className="mode-toggle mode-toggle-triple" role="tablist" aria-label="Mode analisis">
+                <button
+                  className={kategoriUtama === 'sekolah' && halamanAktif === 'evaluasi' ? 'mode-btn active' : 'mode-btn'}
+                  onClick={() => gantiKategoriUtama('sekolah')}
+                >
+                  Klasifikasi
+                </button>
+                <button
+                  className={sedangClustering ? 'mode-btn active' : 'mode-btn'}
+                  onClick={() => gantiKategoriUtama('clustering')}
+                >
+                  Clustering
+                </button>
+                <button
+                  className={kategoriUtama === 'sekolah' && halamanAktif === 'proyeksi' ? 'mode-btn active' : 'mode-btn'}
+                  onClick={() => {
+                    gantiKategoriUtama('sekolah');
+                    setHalamanAktif('proyeksi');
+                    setCsvAktif('/data/regresi/hasil_proyeksi_skenario_c.csv');
+                  }}
+                >
+                  Regresi
+                </button>
+              </div>
+            </>
 
             {!sedangClustering && halamanAktif === 'proyeksi' && (
               <div className="mode-toggle" role="tablist" aria-label="Tampilan regresi" style={{ marginTop: 8 }}>
