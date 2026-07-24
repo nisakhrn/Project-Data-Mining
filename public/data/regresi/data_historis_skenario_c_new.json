@@ -1,0 +1,260 @@
+{
+  "Jumlah_Murid_SD": [
+    {
+      "tahun": 2016,
+      "nilai": 991718.0
+    },
+    {
+      "tahun": 2017,
+      "nilai": 980652.0
+    },
+    {
+      "tahun": 2018,
+      "nilai": 983058.0
+    },
+    {
+      "tahun": 2019,
+      "nilai": 991718.0
+    },
+    {
+      "tahun": 2020,
+      "nilai": 980934.0
+    },
+    {
+      "tahun": 2021,
+      "nilai": 977662.0
+    },
+    {
+      "tahun": 2022,
+      "nilai": 973916.0
+    },
+    {
+      "tahun": 2024,
+      "nilai": 988164.0
+    },
+    {
+      "tahun": 2025,
+      "nilai": 998112.0
+    }
+  ],
+  "Jumlah_Murid_SMP": [
+    {
+      "tahun": 2016,
+      "nilai": 390908.0
+    },
+    {
+      "tahun": 2017,
+      "nilai": 385404.0
+    },
+    {
+      "tahun": 2018,
+      "nilai": 381552.0
+    },
+    {
+      "tahun": 2019,
+      "nilai": 404496.0
+    },
+    {
+      "tahun": 2020,
+      "nilai": 411776.0
+    },
+    {
+      "tahun": 2021,
+      "nilai": 409090.0
+    },
+    {
+      "tahun": 2022,
+      "nilai": 400176.0
+    },
+    {
+      "tahun": 2023,
+      "nilai": 404372.0
+    },
+    {
+      "tahun": 2024,
+      "nilai": 415928.0
+    },
+    {
+      "tahun": 2025,
+      "nilai": 424076.0
+    }
+  ],
+  "Jumlah_Murid_SMA": [
+    {
+      "tahun": 2016,
+      "nilai": 274750.0
+    },
+    {
+      "tahun": 2017,
+      "nilai": 274878.0
+    },
+    {
+      "tahun": 2018,
+      "nilai": 267836.0
+    },
+    {
+      "tahun": 2019,
+      "nilai": 268932.0
+    },
+    {
+      "tahun": 2020,
+      "nilai": 260962.0
+    },
+    {
+      "tahun": 2021,
+      "nilai": 260458.0
+    },
+    {
+      "tahun": 2022,
+      "nilai": 262542.0
+    },
+    {
+      "tahun": 2023,
+      "nilai": 275314.0
+    },
+    {
+      "tahun": 2024,
+      "nilai": 283380.0
+    },
+    {
+      "tahun": 2025,
+      "nilai": 285654.0
+    }
+  ],
+  "Jumlah_Murid_SMK": [
+    {
+      "tahun": 2016,
+      "nilai": 101224.0
+    },
+    {
+      "tahun": 2017,
+      "nilai": 109036.0
+    },
+    {
+      "tahun": 2019,
+      "nilai": 112808.0
+    },
+    {
+      "tahun": 2020,
+      "nilai": 111016.0
+    },
+    {
+      "tahun": 2021,
+      "nilai": 113988.0
+    },
+    {
+      "tahun": 2022,
+      "nilai": 105878.0
+    },
+    {
+      "tahun": 2023,
+      "nilai": 108200.0
+    },
+    {
+      "tahun": 2024,
+      "nilai": 109446.0
+    },
+    {
+      "tahun": 2025,
+      "nilai": 114528.0
+    }
+  ],
+  "Rata-rata_Lama_Sekolah": [
+    {
+      "tahun": 2016,
+      "nilai": 8.88
+    },
+    {
+      "tahun": 2017,
+      "nilai": 9.1
+    },
+    {
+      "tahun": 2018,
+      "nilai": 9.15
+    },
+    {
+      "tahun": 2019,
+      "nilai": 9.3
+    },
+    {
+      "tahun": 2020,
+      "nilai": 9.43
+    },
+    {
+      "tahun": 2021,
+      "nilai": 9.5
+    },
+    {
+      "tahun": 2022,
+      "nilai": 9.6
+    },
+    {
+      "tahun": 2023,
+      "nilai": 9.67
+    },
+    {
+      "tahun": 2024,
+      "nilai": 9.74
+    }
+  ],
+  "Harapan_Lama_Sekolah": [
+    {
+      "tahun": 2016,
+      "nilai": 14.09
+    },
+    {
+      "tahun": 2017,
+      "nilai": 14.2
+    },
+    {
+      "tahun": 2018,
+      "nilai": 14.27
+    },
+    {
+      "tahun": 2019,
+      "nilai": 14.33
+    },
+    {
+      "tahun": 2020,
+      "nilai": 14.36
+    },
+    {
+      "tahun": 2021,
+      "nilai": 14.46
+    },
+    {
+      "tahun": 2022,
+      "nilai": 14.56
+    },
+    {
+      "tahun": 2023,
+      "nilai": 14.66
+    },
+    {
+      "tahun": 2024,
+      "nilai": 14.75
+    }
+  ],
+  "Angka_Melek_Huruf": [
+    {
+      "tahun": 2020,
+      "nilai": 97.96
+    },
+    {
+      "tahun": 2021,
+      "nilai": 98.07
+    },
+    {
+      "tahun": 2022,
+      "nilai": 98.11
+    },
+    {
+      "tahun": 2023,
+      "nilai": 98.17
+    },
+    {
+      "tahun": 2024,
+      "nilai": 98.21
+    }
+  ]
+}

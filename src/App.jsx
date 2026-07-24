@@ -20,6 +20,17 @@ const ambilTahunProyeksi = (namaKolom) => {
   return cocok ? Number(cocok[1]) : null;
 };
 
+// Peta Satuan untuk Tampilan Regresi di App.jsx
+const METADATA_INDIKATOR_APP = {
+  "Jumlah Murid SD": { satuan: "murid", tipe: "jumlah" },
+  "Jumlah Murid SMP": { satuan: "murid", tipe: "jumlah" },
+  "Jumlah Murid SMA": { satuan: "murid", tipe: "jumlah" },
+  "Jumlah Murid SMK": { satuan: "murid", tipe: "jumlah" },
+  "Rata-rata Lama Sekolah": { satuan: "tahun", tipe: "desimal" },
+  "Harapan Lama Sekolah": { satuan: "tahun", tipe: "desimal" },
+  "Angka Melek Huruf": { satuan: "%", tipe: "desimal" }
+};
+
 const formatAngkaRapi = (value) => {
   if (typeof value !== 'number' || !Number.isFinite(value)) {
     return value;
@@ -52,6 +63,7 @@ export default function App() {
   const [daftarVariabelProyeksi, setDaftarVariabelProyeksi] = useState([]);
   const [variabelProyeksiAktif, setVariabelProyeksiAktif] = useState('');
   const [historisRegresi, setHistorisRegresi] = useState(null);
+  const [modelRegresiJson, setModelRegresiJson] = useState(null);
   const [opsiJenjang, setOpsiJenjang] = useState([]);
   const [jenjangAktif, setJenjangAktif] = useState('');
   const [ringkasanUtama, setRingkasanUtama] = useState({
@@ -146,7 +158,7 @@ export default function App() {
   ];
 
   useEffect(() => {
-    // Klasifikasi: ambil ringkasan wilayah "Baik" vs "Perlu Peningkatan" dari hasil terbaru
+    // Klasifikasi
     Papa.parse('/data/klasifikasi/hasil_klasifikasi.csv', {
       download: true,
       header: true,
@@ -173,7 +185,7 @@ export default function App() {
       error: () => setRingkasanGabungan((prev) => ({ ...prev, klasifikasi: null }))
     });
 
-    // Clustering: ambil ringkasan jumlah wilayah per cluster dari tema utama
+    // Clustering
     Papa.parse('/data/clustering/hasil_cluster_tema1.csv', {
       download: true,
       header: true,
@@ -190,7 +202,7 @@ export default function App() {
       error: () => setRingkasanGabungan((prev) => ({ ...prev, clustering: null }))
     });
 
-    // Regresi: ambil ringkasan arah tren dari model yang sudah dilatih
+    // Regresi Model JSON
     fetch('/data/regresi/model_regresi_skenario_c.json')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
@@ -198,6 +210,7 @@ export default function App() {
           setRingkasanGabungan((prev) => ({ ...prev, regresi: null }));
           return;
         }
+        setModelRegresiJson(data);
         const daftar = Object.entries(data);
         const naik = daftar.filter(([, v]) => v.slope > 0).length;
         const rataR2 = daftar.reduce((total, [, v]) => total + v.r2, 0) / (daftar.length || 1);
@@ -563,8 +576,6 @@ export default function App() {
         return [];
       }
 
-      // Cocokkan label CSV (mis. "Jumlah Murid SD (Provinsi Aceh)") ke kunci JSON historis
-      // (mis. "Jumlah_Murid_SD"), lalu gabungkan jadi satu rangkaian: garis historis asli + garis proyeksi.
       const kunciHistoris = variabelProyeksiAktif.split(' (')[0].trim().replace(/\s+/g, '_');
       const dataHistorisVariabel = historisRegresi ? historisRegresi[kunciHistoris] : null;
 
@@ -688,19 +699,6 @@ export default function App() {
     }));
   }, [csvAktif, dataGrafik, sedangClustering]);
 
-  const gantiHalaman = (halaman) => {
-    setHalamanAktif(halaman);
-    setKataKunci('');
-    setSedangRingkasanUtama(false);
-
-    if (halaman === 'evaluasi') {
-      setCsvAktif('/data/klasifikasi/hasil_klasifikasi.csv');
-      return;
-    }
-
-    setCsvAktif('/data/regresi/hasil_proyeksi_skenario_c.csv');
-  };
-
   const gantiKategoriUtama = (kategori) => {
     setKategoriUtama(kategori);
     setKataKunci('');
@@ -718,6 +716,52 @@ export default function App() {
   };
 
   const jumlahDataset = new Intl.NumberFormat('id-ID').format(dataTampil.length);
+
+  // Helper Pemformatan Khusus Regresi Lintas Grafik Historis
+  const metaRegresiAktif = METADATA_INDIKATOR_APP[variabelProyeksiAktif] || { satuan: '', tipe: 'desimal' };
+
+  const formatAngkaRegresi = (v) => {
+    if (typeof v !== 'number' || !Number.isFinite(v)) return v;
+    if (metaRegresiAktif.tipe === 'jumlah') {
+      return new Intl.NumberFormat('id-ID').format(Math.round(v));
+    }
+    return new Intl.NumberFormat('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+  };
+
+  // Kalkulasi Otomatis Deskripsi Simpulan Grafik Historis Regresi
+  const simpulanGrafikHistoris = useMemo(() => {
+    if (halamanAktif !== 'proyeksi' || !dataTampil || dataTampil.length === 0) return null;
+
+    const titikAktual = dataTampil.filter((d) => typeof d.aktual === 'number');
+    const titikProyeksi = dataTampil.filter((d) => typeof d.proyeksi === 'number');
+
+    if (titikAktual.length === 0) return null;
+
+    const awalAktual = titikAktual[0];
+    const akhirAktual = titikAktual[titikAktual.length - 1];
+    const akhirProyeksi = titikProyeksi[titikProyeksi.length - 1];
+
+    const modelInfo = modelRegresiJson ? modelRegresiJson[variabelProyeksiAktif] : null;
+    const r2Val = modelInfo ? modelInfo.r2 : null;
+
+    const selisihHistoris = akhirAktual.aktual - awalAktual.aktual;
+    const persentaseHistoris = ((selisihHistoris / awalAktual.aktual) * 100).toFixed(1);
+    const arahHistoris = selisihHistoris >= 0 ? 'peningkatan' : 'penurunan';
+
+    let teksSimpulan = `Berdasarkan data historis tahun ${awalAktual.tahun}–${akhirAktual.tahun}, indikator **${variabelProyeksiAktif}** mengalami ${arahHistoris} sebesar **${Math.abs(persentaseHistoris)}%** (dari ${formatAngkaRegresi(awalAktual.aktual)} ${metaRegresiAktif.satuan} menjadi ${formatAngkaRegresi(akhirAktual.aktual)} ${metaRegresiAktif.satuan}).`;
+
+    if (akhirProyeksi) {
+      const selisihProyeksi = akhirProyeksi.proyeksi - akhirAktual.aktual;
+      const arahProyeksi = selisihProyeksi >= 0 ? 'meningkat' : 'menurun';
+      teksSimpulan += ` Menggunakan pemodelan regresi linear, nilai indikator ini diproyeksikan terus ${arahProyeksi} hingga mencapai **${formatAngkaRegresi(akhirProyeksi.proyeksi)} ${metaRegresiAktif.satuan}** pada tahun ${akhirProyeksi.tahun}.`;
+    }
+
+    return {
+      teks: teksSimpulan,
+      r2: r2Val,
+      sumber: "Badan Pusat Statistik (BPS) Provinsi Aceh"
+    };
+  }, [dataTampil, halamanAktif, variabelProyeksiAktif, metaRegresiAktif, modelRegresiJson]);
 
   const renderGrafik = () => {
     if (sedangClustering) {
@@ -809,10 +853,10 @@ export default function App() {
               tickLine={false}
               domain={domainY}
               allowDecimals
-              tickFormatter={(v) => new Intl.NumberFormat('id-ID', { maximumFractionDigits: 2 }).format(v)}
+              tickFormatter={formatAngkaRegresi}
             />
             <Tooltip
-              formatter={(v) => new Intl.NumberFormat('id-ID', { maximumFractionDigits: 2 }).format(v)}
+              formatter={(v) => [`${formatAngkaRegresi(v)} ${metaRegresiAktif.satuan}`, variabelProyeksiAktif]}
               contentStyle={{ borderRadius: '10px', borderColor: '#e8ebf0' }}
             />
             <Legend />
@@ -820,19 +864,19 @@ export default function App() {
               <Line
                 type="monotone"
                 dataKey="aktual"
-                name="Data Historis Asli"
+                name={`Data Historis Asli (${metaRegresiAktif.satuan})`}
                 stroke="#2a78d6"
-                strokeWidth={2}
-                dot={{ r: 3 }}
+                strokeWidth={2.5}
+                dot={{ r: 4 }}
                 connectNulls={false}
               />
             )}
             <Line
               type="monotone"
               dataKey="proyeksi"
-              name="Garis Proyeksi (Model)"
+              name={`Garis Proyeksi (${metaRegresiAktif.satuan})`}
               stroke="#eb2b39"
-              strokeWidth={2}
+              strokeWidth={2.5}
               strokeDasharray={adaDataHistoris ? '6 4' : undefined}
               activeDot={{ r: 6 }}
               connectNulls
@@ -1273,6 +1317,34 @@ export default function App() {
               </header>
 
               <div className={halamanAktif === 'evaluasi' ? 'chart-wrap tall' : 'chart-wrap'}>{renderGrafik()}</div>
+
+              {/* SUMBER & DESKRIPSI SIMPULAN GRAFIK HISTORIS */}
+              {halamanAktif === 'proyeksi' && simpulanGrafikHistoris && (
+                <div style={{
+                  marginTop: '20px',
+                  padding: '16px',
+                  background: '#f8fafc',
+                  borderRadius: '8px',
+                  border: '1px solid #e2e8f0'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <h4 style={{ margin: 0, fontSize: '0.95rem', color: '#1e293b', fontWeight: 700 }}>
+                      📌 Deskripsi & Simpulan Tren
+                    </h4>
+                    {simpulanGrafikHistoris.r2 !== null && (
+                      <span style={{ fontSize: '0.78rem', padding: '2px 8px', borderRadius: '4px', background: '#e0f2fe', color: '#0369a1', fontWeight: 600 }}>
+                        Akurasi Model (R²): {simpulanGrafikHistoris.r2.toFixed(3)}
+                      </span>
+                    )}
+                  </div>
+                  <p style={{ margin: '0 0 10px 0', fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}
+                     dangerouslySetInnerHTML={{ __html: simpulanGrafikHistoris.teks.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} 
+                  />
+                  <div style={{ fontSize: '0.78rem', color: '#64748b', fontStyle: 'italic', borderTop: '1px stroke #cbd5e1', paddingTop: '6px' }}>
+                    Sumber Data Historis: <strong>{simpulanGrafikHistoris.sumber}</strong>
+                  </div>
+                </div>
+              )}
             </article>
 
             {sedangClustering && rawClusteringData.length > 0 && (
