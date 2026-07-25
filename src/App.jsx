@@ -77,13 +77,14 @@ export default function App() {
   });
 
   const [rawClusteringData, setRawClusteringData] = useState([]);
+  const [rawKlasifikasiData, setRawKlasifikasiData] = useState([]);
 
   const menuKlasifikasi = [
-    { label: "Hasil Keseluruhan", path: "/data/klasifikasi/hasil_klasifikasi.csv" },
-    { label: "Distribusi Prioritas Bantuan", path: "/data/klasifikasi/hasil_klasifikasi_prioritas.csv" },
-    { label: "Jenjang Terlemah", path: "/data/klasifikasi/hasil_klasifikasi_jenjang_terlemah.csv" },
-    { label: "Evaluasi Per Jenjang", path: "/data/klasifikasi/hasil_klasifikasi_per_jenjang.csv" },
-    { label: "Klasifikasi Tren", path: "/data/klasifikasi/hasil_klasifikasi_tren.csv" }
+    { label: "Kondisi Pendidikan Tiap Wilayah", path: "/data/klasifikasi/hasil_klasifikasi.csv" },
+    { label: "Wilayah Prioritas Perhatian Pendidikan", path: "/data/klasifikasi/hasil_klasifikasi_prioritas.csv" },
+    { label: "Jenjang Paling Kekurangan Guru", path: "/data/klasifikasi/hasil_klasifikasi_jenjang_terlemah.csv" },
+    { label: "Kondisi Guru per Jenjang Sekolah", path: "/data/klasifikasi/hasil_klasifikasi_per_jenjang.csv" },
+    { label: "Tren Kemajuan Pendidikan Tiap Wilayah", path: "/data/klasifikasi/hasil_klasifikasi_tren.csv" }
   ];
 
   const menuRegresi = [
@@ -285,6 +286,10 @@ export default function App() {
           setVariabelProyeksiAktif('');
           setDataGrafik(dataTransform);
           return;
+        }
+
+        if (!modeClustering) {
+          setRawKlasifikasiData(dataBersih);
         }
 
         if (modeHasilKeseluruhan) {
@@ -684,6 +689,47 @@ export default function App() {
       clusterDominanCount: Number(clusterDominan?.jumlah_wilayah ?? 0)
     };
   }, [dataGrafik, sedangClustering]);
+
+  const ringkasanJenjangTerlemah = useMemo(() => {
+    if (!sedangJenjangTerlemah || dataGrafik.length === 0) return null;
+    const totalWilayah = dataGrafik.reduce((sum, row) => sum + Number(row.jumlah_wilayah ?? 0), 0);
+    const dominan = [...dataGrafik].sort((a, b) => Number(b.jumlah_wilayah ?? 0) - Number(a.jumlah_wilayah ?? 0))[0];
+    return {
+      totalWilayah,
+      jenjangDominan: dominan?.jenjang ?? '-',
+      jenjangDominanCount: Number(dominan?.jumlah_wilayah ?? 0)
+    };
+  }, [dataGrafik, sedangJenjangTerlemah]);
+
+  const ringkasanPerJenjang = useMemo(() => {
+    if (!sedangPerJenjang || dataGrafik.length === 0) return null;
+    const terbaru = new Map();
+    dataGrafik.forEach((row) => {
+      const wilayah = String(row.kabupaten_kota ?? '').trim();
+      const tahun = Number(row.tahun ?? 0);
+      if (!wilayah) return;
+      const lama = terbaru.get(wilayah);
+      if (!lama || tahun >= Number(lama.tahun ?? 0)) terbaru.set(wilayah, row);
+    });
+    const arr = Array.from(terbaru.values());
+    const totalWilayah = arr.length;
+    const jenjangLabel = jenjangAktif.replace('rasio_murid_per_guru_', '').toUpperCase();
+    const labelKolom = `Label_${jenjangLabel}`;
+    const predKolom = `Prediksi_Label_${jenjangLabel}`;
+    const perluPeningkatan = arr.filter((r) => String(r[labelKolom] ?? '') === 'Perlu Peningkatan').length;
+    const cocok = arr.filter((r) => String(r[labelKolom] ?? '') === String(r[predKolom] ?? '')).length;
+    const akurasi = totalWilayah > 0 ? Math.round((cocok / totalWilayah) * 100) : 0;
+    return { totalWilayah, perluPeningkatan, cocok, akurasi, jenjangLabel };
+  }, [dataGrafik, sedangPerJenjang, jenjangAktif]);
+
+  const ringkasanTren = useMemo(() => {
+    if (!sedangKlasifikasiTren || dataGrafik.length === 0) return null;
+    const membaik = Number(dataGrafik.find((r) => r.tren === 'Membaik')?.jumlah_wilayah ?? 0);
+    const stagnan = Number(dataGrafik.find((r) => r.tren === 'Stagnan')?.jumlah_wilayah ?? 0);
+    const menurun = Number(dataGrafik.find((r) => r.tren === 'Menurun')?.jumlah_wilayah ?? 0);
+    const total = membaik + stagnan + menurun;
+    return { total, membaik, stagnan, menurun };
+  }, [dataGrafik, sedangKlasifikasiTren]);
 
   const keteranganClusteringAktif = useMemo(() => {
     if (!sedangClustering) {
@@ -1192,6 +1238,66 @@ export default function App() {
               </div>
             )}
 
+            {sedangJenjangTerlemah && ringkasanJenjangTerlemah && (
+              <div className="kpi-grid">
+                <article className="kpi-card">
+                  <span>Total Wilayah</span>
+                  <strong>{ringkasanJenjangTerlemah.totalWilayah}</strong>
+                </article>
+                <article className="kpi-card">
+                  <span>Jenjang Terbanyak Kekurangan Guru</span>
+                  <strong>{ringkasanJenjangTerlemah.jenjangDominan}</strong>
+                </article>
+                <article className="kpi-card accent">
+                  <span>Wilayah di Jenjang Tersebut</span>
+                  <strong>{ringkasanJenjangTerlemah.jenjangDominanCount}</strong>
+                  <small>dari {ringkasanJenjangTerlemah.totalWilayah} wilayah</small>
+                </article>
+              </div>
+            )}
+
+            {sedangPerJenjang && ringkasanPerJenjang && (
+              <div className="kpi-grid">
+                <article className="kpi-card">
+                  <span>Total Wilayah</span>
+                  <strong>{ringkasanPerJenjang.totalWilayah}</strong>
+                </article>
+                <article className="kpi-card">
+                  <span>Perlu Peningkatan ({ringkasanPerJenjang.jenjangLabel})</span>
+                  <strong>{ringkasanPerJenjang.perluPeningkatan}</strong>
+                </article>
+                <article className="kpi-card">
+                  <span>Prediksi Cocok</span>
+                  <strong>{ringkasanPerJenjang.cocok}</strong>
+                </article>
+                <article className="kpi-card accent">
+                  <span>Akurasi Prediksi</span>
+                  <strong>{ringkasanPerJenjang.akurasi}%</strong>
+                </article>
+              </div>
+            )}
+
+            {sedangKlasifikasiTren && ringkasanTren && (
+              <div className="kpi-grid">
+                <article className="kpi-card">
+                  <span>Total Wilayah</span>
+                  <strong>{ringkasanTren.total}</strong>
+                </article>
+                <article className="kpi-card" style={{ borderTop: '3px solid #22c55e' }}>
+                  <span>📈 Pendidikan Membaik</span>
+                  <strong style={{ color: '#16a34a' }}>{ringkasanTren.membaik}</strong>
+                </article>
+                <article className="kpi-card" style={{ borderTop: '3px solid #f59e0b' }}>
+                  <span>➡️ Stagnan</span>
+                  <strong style={{ color: '#d97706' }}>{ringkasanTren.stagnan}</strong>
+                </article>
+                <article className="kpi-card accent" style={{ borderTop: '3px solid #ef4444' }}>
+                  <span>📉 Pendidikan Menurun</span>
+                  <strong style={{ color: '#dc2626' }}>{ringkasanTren.menurun}</strong>
+                </article>
+              </div>
+            )}
+
             <div className="results-head">
               <p className="results-count">
                 <span className="ping-dot" aria-hidden="true" />
@@ -1282,17 +1388,17 @@ export default function App() {
                   {sedangClustering
                     ? `Distribusi Cluster ${menuAktif.find((menu) => menu.path === csvAktif)?.label ?? ''}`
                     : halamanAktif === 'evaluasi' && sedangPrioritasBantuan
-                        ? `Distribusi Prioritas Bantuan ${bidangAktif}`
+                        ? `Wilayah Prioritas Perhatian Pendidikan – ${bidangAktif}`
                         : halamanAktif === 'evaluasi' && sedangHasilKeseluruhan
-                          ? `Ringkasan Hasil Keseluruhan ${bidangAktif}`
+                          ? `Kondisi Pendidikan Tiap Wilayah – ${bidangAktif}`
                           : halamanAktif === 'proyeksi'
                             ? `Proyeksi Tren ${bidangAktif}`
                             : halamanAktif === 'evaluasi' && sedangPerJenjang
-                              ? `Evaluasi Per Jenjang ${bidangAktif}`
+                              ? `Kondisi Guru per Jenjang Sekolah – ${bidangAktif}`
                               : halamanAktif === 'evaluasi' && sedangJenjangTerlemah
-                                ? `Peta Jenjang Terlemah ${bidangAktif}`
+                                ? `Jenjang Paling Kekurangan Guru – ${bidangAktif}`
                                 : halamanAktif === 'evaluasi' && sedangKlasifikasiTren
-                                  ? `Distribusi Klasifikasi Tren ${bidangAktif}`
+                                  ? `Tren Kemajuan Pendidikan Tiap Wilayah – ${bidangAktif}`
                                   : halamanAktif === 'evaluasi'
                                     ? `Evaluasi dan Ranking ${bidangAktif}`
                                     : ''}
@@ -1346,6 +1452,191 @@ export default function App() {
                 </div>
               )}
             </article>
+
+            {/* DAFTAR WILAYAH PER KATEGORI - KLASIFIKASI */}
+            {!sedangClustering && halamanAktif === 'evaluasi' && rawKlasifikasiData.length > 0 && (() => {
+              const kata = kataKunci.trim().toLowerCase();
+
+              // Tentukan konfigurasi label & warna per tab
+              let config = null;
+              let insightNode = null;
+
+              if (sedangHasilKeseluruhan) {
+                insightNode = (
+                  <div style={{ marginBottom: 20, padding: 16, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+                    <h4 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', color: '#1e293b' }}>💡 Memahami Kondisi Pendidikan Tiap Wilayah</h4>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}>
+                      Pemetaan ini mengukur status pendidikan berdasarkan indikator utama seperti Rata-rata Lama Sekolah (RLS). Wilayah <strong>Baik</strong> memiliki capaian pendidikan yang memadai, sementara wilayah <strong>Perlu Peningkatan</strong> membutuhkan intervensi khusus untuk mengatasi isu seperti angka partisipasi sekolah yang rendah.
+                    </p>
+                  </div>
+                );
+                // Ambil data terbaru per wilayah
+                const mapTerbaru = new Map();
+                rawKlasifikasiData.forEach((row) => {
+                  const wilayah = String(row.kabupaten_kota ?? '').trim();
+                  const tahun = Number(row.tahun ?? 0);
+                  if (!wilayah) return;
+                  const lama = mapTerbaru.get(wilayah);
+                  if (!lama || tahun >= Number(lama.tahun ?? 0)) mapTerbaru.set(wilayah, row);
+                });
+                const terbaru = Array.from(mapTerbaru.values());
+                const kategoriList = ['Baik', 'Perlu Peningkatan'];
+                const warna = { 'Baik': '#22c55e', 'Perlu Peningkatan': '#ef4444' };
+                config = { judul: 'Daftar Wilayah per Kondisi Pendidikan', kategoriList, warna, getLabel: (row) => String(row.Label_RLS ?? '').trim() };
+                config.rows = terbaru;
+              } else if (sedangPrioritasBantuan) {
+                insightNode = (
+                  <div style={{ marginBottom: 20, padding: 16, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+                    <h4 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', color: '#1e293b' }}>💡 Memahami Prioritas Bantuan</h4>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}>
+                      Kategori ini diurutkan berdasarkan urgensi kebutuhan. Wilayah <strong>Prioritas Tinggi</strong> adalah daerah yang indikator pendidikannya berada jauh di bawah standar sehingga butuh alokasi bantuan segera. Wilayah <strong>Prioritas Rendah</strong> berarti kondisi pendidikan sudah relatif stabil.
+                    </p>
+                  </div>
+                );
+                const mapTerbaru = new Map();
+                rawKlasifikasiData.forEach((row) => {
+                  const wilayah = String(row.kabupaten_kota ?? '').trim();
+                  const tahun = Number(row.tahun ?? 0);
+                  if (!wilayah) return;
+                  const lama = mapTerbaru.get(wilayah);
+                  if (!lama || tahun >= Number(lama.tahun ?? 0)) mapTerbaru.set(wilayah, row);
+                });
+                const terbaru = Array.from(mapTerbaru.values());
+                const kategoriList = ['Prioritas Tinggi', 'Prioritas Sedang', 'Prioritas Rendah'];
+                const warna = { 'Prioritas Tinggi': '#ef4444', 'Prioritas Sedang': '#f59e0b', 'Prioritas Rendah': '#22c55e' };
+                config = { judul: 'Daftar Wilayah per Prioritas', kategoriList, warna, getLabel: (row) => String(row.Label_Prioritas ?? '').trim() };
+                config.rows = terbaru;
+              } else if (sedangJenjangTerlemah) {
+                insightNode = (
+                  <div style={{ marginBottom: 20, padding: 16, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+                    <h4 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', color: '#1e293b' }}>💡 Memahami Jenjang Paling Kekurangan Guru</h4>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}>
+                      Analisis ini mengidentifikasi jenjang pendidikan mana (SD, SMP, SMA, atau SMK) yang paling mengalami kekurangan guru di tiap wilayah. Data ini sangat krusial untuk mengarahkan fokus rekrutmen atau pemerataan tenaga pengajar secara spesifik.
+                    </p>
+                  </div>
+                );
+                const mapTerbaru = new Map();
+                rawKlasifikasiData.forEach((row) => {
+                  const wilayah = String(row.kabupaten_kota ?? '').trim();
+                  const tahun = Number(row.tahun ?? 0);
+                  if (!wilayah) return;
+                  const lama = mapTerbaru.get(wilayah);
+                  if (!lama || tahun >= Number(lama.tahun ?? 0)) mapTerbaru.set(wilayah, row);
+                });
+                const terbaru = Array.from(mapTerbaru.values());
+                const kategoriList = ['SD', 'SMP', 'SMA', 'SMK'];
+                const warna = { 'SD': '#6366f1', 'SMP': '#f59e0b', 'SMA': '#ef4444', 'SMK': '#8b5cf6' };
+                config = { judul: 'Daftar Wilayah per Jenjang Kekurangan Guru', kategoriList, warna, getLabel: (row) => String(row.Jenjang_Terlemah ?? '').trim().toUpperCase() };
+                config.rows = terbaru;
+              } else if (sedangPerJenjang) {
+                const mapTerbaru = new Map();
+                rawKlasifikasiData.forEach((row) => {
+                  const wilayah = String(row.kabupaten_kota ?? '').trim();
+                  const tahun = Number(row.tahun ?? 0);
+                  if (!wilayah) return;
+                  const lama = mapTerbaru.get(wilayah);
+                  if (!lama || tahun >= Number(lama.tahun ?? 0)) mapTerbaru.set(wilayah, row);
+                });
+                const terbaru = Array.from(mapTerbaru.values());
+                const jLabel = jenjangAktif.replace('rasio_murid_per_guru_', '').toUpperCase();
+                
+                const sorted = [...terbaru].sort((a, b) => Number(a[jenjangAktif] ?? 0) - Number(b[jenjangAktif] ?? 0));
+                const terbaik = sorted[0];
+                const terburuk = sorted[sorted.length - 1];
+                const rataRata = sorted.reduce((sum, row) => sum + Number(row[jenjangAktif] ?? 0), 0) / (sorted.length || 1);
+
+                const teksPenjelasan = `Grafik di atas menampilkan <strong>Rasio Murid per Guru</strong> untuk jenjang ${jLabel}. <strong>${terbaik?.kabupaten_kota || 'Wilayah terbaik'}</strong> merupakan wilayah dengan kondisi terbaik karena memiliki rasio terendah (${Number(terbaik?.[jenjangAktif] ?? 0).toFixed(1)}), yang berarti beban satu guru sangat ringan dan pembelajaran lebih terfokus. Sebaliknya, <strong>${terburuk?.kabupaten_kota || 'Wilayah terburuk'}</strong> perlu mendapat prioritas penambahan guru karena memiliki rasio tertinggi (${Number(terburuk?.[jenjangAktif] ?? 0).toFixed(1)}), menandakan satu guru harus menangani terlalu banyak murid.`;
+
+                return (
+                  <div className="clustering-regions-section" style={{ marginTop: 24 }}>
+                    <h3 style={{ marginBottom: 14, fontSize: '1.2rem', fontFamily: 'var(--font-heading)' }}>
+                      💡 Memahami Kondisi {jLabel}
+                    </h3>
+                    <div style={{ padding: 20, background: '#f8fafc', borderRadius: 12, border: '1px solid #e2e8f0' }}>
+                      <p style={{ margin: '0 0 16px 0', fontSize: '0.95rem', color: '#334155', lineHeight: '1.6' }} dangerouslySetInnerHTML={{ __html: teksPenjelasan }} />
+                      <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                        <article className="kpi-card" style={{ borderTop: '3px solid #22c55e', padding: '16px' }}>
+                          <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Kondisi Terbaik (Rasio Terendah)</span>
+                          <strong style={{ color: '#16a34a', fontSize: '1.25rem', display: 'block', margin: '4px 0' }}>{terbaik?.kabupaten_kota}</strong>
+                          <small style={{ color: '#475569', fontSize: '0.9rem' }}>{Number(terbaik?.[jenjangAktif]).toFixed(1)} murid / guru</small>
+                        </article>
+                        <article className="kpi-card" style={{ borderTop: '3px solid #3b82f6', padding: '16px' }}>
+                          <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Rata-rata Provinsi</span>
+                          <strong style={{ color: '#2563eb', fontSize: '1.25rem', display: 'block', margin: '4px 0' }}>{rataRata.toFixed(1)}</strong>
+                          <small style={{ color: '#475569', fontSize: '0.9rem' }}>murid / guru</small>
+                        </article>
+                        <article className="kpi-card" style={{ borderTop: '3px solid #ef4444', padding: '16px' }}>
+                          <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Perlu Perhatian (Rasio Tertinggi)</span>
+                          <strong style={{ color: '#dc2626', fontSize: '1.25rem', display: 'block', margin: '4px 0' }}>{terburuk?.kabupaten_kota}</strong>
+                          <small style={{ color: '#475569', fontSize: '0.9rem' }}>{Number(terburuk?.[jenjangAktif]).toFixed(1)} murid / guru</small>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                );
+              } else if (sedangKlasifikasiTren) {
+                insightNode = (
+                  <div style={{ marginBottom: 20, padding: 16, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+                    <h4 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', color: '#1e293b' }}>💡 Memahami Tren Kemajuan Pendidikan</h4>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}>
+                      Tren ini melihat pergerakan indikator pendidikan dari tahun ke tahun. Wilayah dengan tren <strong>Membaik</strong> menunjukkan peningkatan berkelanjutan. <strong>Stagnan</strong> berarti tidak ada perubahan berarti, sementara <strong>Menurun</strong> mengindikasikan adanya penurunan kualitas yang harus segera ditindaklanjuti.
+                    </p>
+                  </div>
+                );
+                const kategoriList = ['Membaik', 'Stagnan', 'Menurun'];
+                const warna = { 'Membaik': '#22c55e', 'Stagnan': '#f59e0b', 'Menurun': '#ef4444' };
+                config = { judul: 'Daftar Wilayah per Tren Kemajuan Pendidikan', kategoriList, warna, getLabel: (row) => String(row.label_tren ?? '').trim() };
+                config.rows = rawKlasifikasiData;
+              }
+
+              if (!config) return null;
+
+              return (
+                <div className="clustering-regions-section" style={{ marginTop: 24 }}>
+                  <h3 style={{ marginBottom: 14, fontSize: '1.2rem', fontFamily: 'var(--font-heading)' }}>
+                    {config.judul}
+                  </h3>
+                  {insightNode}
+                  <div className="clustering-regions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
+                    {config.kategoriList.map((kategori) => {
+                      const wilayahDiKategori = config.rows
+                        .filter((row) => config.getLabel(row) === kategori)
+                        .map((row) => String(row.kabupaten_kota ?? '').trim())
+                        .filter(Boolean)
+                        .filter((w) => !kata || w.toLowerCase().includes(kata))
+                        .sort((a, b) => a.localeCompare(b, 'id'));
+
+                      const borderColor = config.warna[kategori] ?? '#cbd5e1';
+
+                      return (
+                        <article className="chart-card" key={kategori} style={{ padding: 16, borderTop: `3px solid ${borderColor}` }}>
+                          <header className="chart-header" style={{ borderBottom: '1px solid #e7ebf1', paddingBottom: 8, marginBottom: 12 }}>
+                            <h4 style={{ margin: 0, color: '#1f2a3f', fontSize: '1rem', fontWeight: 700 }}>
+                              {kategori}
+                            </h4>
+                            <span className="status-chip active">
+                              {wilayahDiKategori.length} Wilayah
+                            </span>
+                          </header>
+                          <div style={{ maxHeight: '220px', overflowY: 'auto', paddingRight: 4 }}>
+                            <ul style={{ margin: 0, paddingLeft: 18, fontSize: '0.88rem', color: '#47526a', lineHeight: '1.7' }}>
+                              {wilayahDiKategori.map((wilayah) => (
+                                <li key={wilayah} style={{ marginBottom: 4 }}>{wilayah}</li>
+                              ))}
+                              {wilayahDiKategori.length === 0 && (
+                                <li style={{ listStyleType: 'none', marginLeft: -18, color: '#939bae', fontStyle: 'italic' }}>
+                                  Tidak ada wilayah yang cocok
+                                </li>
+                              )}
+                            </ul>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
 
             {sedangClustering && rawClusteringData.length > 0 && (
               <div className="clustering-regions-section" style={{ marginTop: 24 }}>
