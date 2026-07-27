@@ -1010,7 +1010,7 @@ export default function App() {
       <main className="page-content">
         <section className="section-title">
           <span className="section-dot" aria-hidden="true" />
-          <h1>Dashboard Ringkasan Data Mining Daerah</h1>
+          <h1>Dashboard Ringkasan Data Mining Pendidikan Aceh</h1>
         </section>
 
         {sedangRingkasanUtama ? (
