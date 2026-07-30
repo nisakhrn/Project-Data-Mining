@@ -1088,6 +1088,9 @@ export default function App() {
               <p className="panel-subtitle">
                 Ringkasan hasil olahan untuk bidang {bidangAktif} yang dapat diperluas ke sektor lain.
               </p>
+              <p className="data-source">
+                Sumber : Badan Pusat Statistik (BPS) Provinsi Aceh
+              </p>
 
               <div className="module-list">
                 {modulAnalitik.map((modul) => (
